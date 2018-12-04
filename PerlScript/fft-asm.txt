@@ -1,0 +1,2625 @@
+*NODE:1:SW
+    1AAF: 10       PUSH  X
+    1AB0: 4F       MOV   X,SP
+    1AB1: 38 05    ADD   SP,5
+*NODE:2:SW
+    1AB3: 10       PUSH  X
+    1AB4: 50 00    MOV   A,0
+    1AB6: 7C 03 CC LCALL 0x03CC
+*NODE:3:SW
+    1AB9: 50 02    MOV   A,2
+    1ABB: 7C 04 FC LCALL 0x04FC
+*NODE:4:SW
+    1ABE: 50 03    MOV   A,3
+    1AC0: 7C 08 2B LCALL 0x082B
+*NODE:5:SW
+    1AC3: 7C 08 41 LCALL 0x0841
+    1AC6: 20       POP   X
+*NODE:6:SW
+    1AC7: 62 D0 00 MOV   REG[208],0
+    1ACA: 51 33    MOV   A,[N_samples+1]
+    1ACC: 21 01    AND   A,1
+    1ACE: 62 D0 00 MOV   REG[208],0
+    1AD1: 53 1A    MOV   [__r1],A
+    1AD3: 62 D0 00 MOV   REG[208],0
+    1AD6: 51 32    MOV   A,[N_samples]
+    1AD8: 21 00    AND   A,0
+    1ADA: 62 D0 00 MOV   REG[208],0
+    1ADD: 53 1B    MOV   [__r0],A
+    1ADF: 51 1A    MOV   A,[__r1]
+    1AE1: 53 18    MOV   [__r3],A
+    1AE3: 51 1B    MOV   A,[__r0]
+    1AE5: 53 19    MOV   [__r2],A
+    1AE7: 47 19 80 TST   [__r2],128
+    1AEA: A0 09    JZ    0x1AF4
+    1AEC: 55 1A FF MOV   [__r1],255
+    1AEF: 55 1B FF MOV   [__r0],255
+    1AF2: 80 0A    JMP   0x1AFD
+    1AF4: 62 D0 00 MOV   REG[208],0
+    1AF7: 55 1A 00 MOV   [__r1],0
+    1AFA: 55 1B 00 MOV   [__r0],0
+    1AFD: 62 D0 00 MOV   REG[208],0
+    1B00: 51 1B    MOV   A,[__r0]
+    1B02: 08       PUSH  A
+    1B03: 51 1A    MOV   A,[__r1]
+    1B05: 08       PUSH  A
+    1B06: 51 19    MOV   A,[__r2]
+    1B08: 08       PUSH  A
+    1B09: 51 18    MOV   A,[__r3]
+    1B0B: 08       PUSH  A
+    1B0C: 7C 24 6D LCALL __long2fp
+    1B0F: 18       POP   A
+    1B10: 53 18    MOV   [__r3],A
+    1B12: 18       POP   A
+    1B13: 53 19    MOV   [__r2],A
+    1B15: 18       POP   A
+    1B16: 53 1A    MOV   [__r1],A
+    1B18: 18       POP   A
+    1B19: 53 1B    MOV   [__r0],A
+    1B1B: 62 D0 00 MOV   REG[208],0
+    1B1E: 51 33    MOV   A,[N_samples+1]
+    1B20: 08       PUSH  A
+    1B21: 51 32    MOV   A,[N_samples]
+    1B23: 62 D0 00 MOV   REG[208],0
+    1B26: 53 17    MOV   [__r4],A
+    1B28: 18       POP   A
+    1B29: 53 16    MOV   [__r5],A
+    1B2B: 70 FB    AND   F,251
+    1B2D: 6E 17    RRC   [__r4]
+    1B2F: 6E 16    RRC   [__r5]
+    1B31: 51 16    MOV   A,[__r5]
+    1B33: 53 14    MOV   [__r7],A
+    1B35: 51 17    MOV   A,[__r4]
+    1B37: 53 15    MOV   [__r6],A
+    1B39: 47 15 80 TST   [__r6],128
+    1B3C: A0 09    JZ    0x1B46
+    1B3E: 55 16 FF MOV   [__r5],255
+    1B41: 55 17 FF MOV   [__r4],255
+    1B44: 80 0A    JMP   0x1B4F
+    1B46: 62 D0 00 MOV   REG[208],0
+    1B49: 55 16 00 MOV   [__r5],0
+    1B4C: 55 17 00 MOV   [__r4],0
+    1B4F: 62 D0 00 MOV   REG[208],0
+    1B52: 51 17    MOV   A,[__r4]
+    1B54: 08       PUSH  A
+    1B55: 51 16    MOV   A,[__r5]
+    1B57: 08       PUSH  A
+    1B58: 51 15    MOV   A,[__r6]
+    1B5A: 08       PUSH  A
+    1B5B: 51 14    MOV   A,[__r7]
+    1B5D: 08       PUSH  A
+    1B5E: 7C 24 6D LCALL __long2fp
+    1B61: 18       POP   A
+    1B62: 53 14    MOV   [__r7],A
+    1B64: 18       POP   A
+    1B65: 53 15    MOV   [__r6],A
+    1B67: 18       POP   A
+    1B68: 53 16    MOV   [__r5],A
+    1B6A: 18       POP   A
+    1B6B: 08       PUSH  A
+    1B6C: 51 16    MOV   A,[__r5]
+    1B6E: 08       PUSH  A
+    1B6F: 51 15    MOV   A,[__r6]
+    1B71: 08       PUSH  A
+    1B72: 51 14    MOV   A,[__r7]
+    1B74: 08       PUSH  A
+    1B75: 50 40    MOV   A,64
+    1B77: 08       PUSH  A
+    1B78: 50 00    MOV   A,0
+    1B7A: 08       PUSH  A
+    1B7B: 08       PUSH  A
+    1B7C: 08       PUSH  A
+    1B7D: 7C 21 9A LCALL __fpmul
+    1B80: 18       POP   A
+    1B81: 53 14    MOV   [__r7],A
+    1B83: 18       POP   A
+    1B84: 53 15    MOV   [__r6],A
+    1B86: 18       POP   A
+    1B87: 53 16    MOV   [__r5],A
+    1B89: 18       POP   A
+    1B8A: 53 17    MOV   [__r4],A
+    1B8C: 38 FC    ADD   SP,252
+    1B8E: 51 1B    MOV   A,[__r0]
+    1B90: 08       PUSH  A
+    1B91: 51 1A    MOV   A,[__r1]
+    1B93: 08       PUSH  A
+    1B94: 51 19    MOV   A,[__r2]
+    1B96: 08       PUSH  A
+    1B97: 51 18    MOV   A,[__r3]
+    1B99: 08       PUSH  A
+    1B9A: 51 17    MOV   A,[__r4]
+    1B9C: 08       PUSH  A
+    1B9D: 51 16    MOV   A,[__r5]
+    1B9F: 08       PUSH  A
+    1BA0: 51 15    MOV   A,[__r6]
+    1BA2: 08       PUSH  A
+    1BA3: 51 14    MOV   A,[__r7]
+    1BA5: 08       PUSH  A
+    1BA6: 7C 20 B6 LCALL __fpadd
+    1BA9: 18       POP   A
+    1BAA: 53 18    MOV   [__r3],A
+    1BAC: 18       POP   A
+    1BAD: 53 19    MOV   [__r2],A
+    1BAF: 18       POP   A
+    1BB0: 53 1A    MOV   [__r1],A
+    1BB2: 18       POP   A
+    1BB3: 38 FC    ADD   SP,252
+    1BB5: 08       PUSH  A
+    1BB6: 51 1A    MOV   A,[__r1]
+    1BB8: 08       PUSH  A
+    1BB9: 51 19    MOV   A,[__r2]
+    1BBB: 08       PUSH  A
+    1BBC: 51 18    MOV   A,[__r3]
+    1BBE: 08       PUSH  A
+    1BBF: 50 42    MOV   A,66
+    1BC1: 08       PUSH  A
+    1BC2: 50 80    MOV   A,128
+    1BC4: 08       PUSH  A
+    1BC5: 50 00    MOV   A,0
+    1BC7: 08       PUSH  A
+    1BC8: 08       PUSH  A
+    1BC9: 7C 22 83 LCALL __fpdiv
+    1BCC: 18       POP   A
+    1BCD: 62 D0 00 MOV   REG[208],0
+    1BD0: 53 23    MOV   [time+3],A
+    1BD2: 18       POP   A
+    1BD3: 53 22    MOV   [time+2],A
+    1BD5: 18       POP   A
+    1BD6: 53 21    MOV   [time+1],A
+    1BD8: 18       POP   A
+    1BD9: 53 20    MOV   [time],A
+    1BDB: 38 FC    ADD   SP,252
+*NODE:7:SW
+    1BDD: 51 20    MOV   A,[time]
+    1BDF: 08       PUSH  A
+    1BE0: 51 21    MOV   A,[time+1]
+    1BE2: 08       PUSH  A
+    1BE3: 51 22    MOV   A,[time+2]
+    1BE5: 08       PUSH  A
+    1BE6: 51 23    MOV   A,[time+3]
+    1BE8: 08       PUSH  A
+    1BE9: 50 3F    MOV   A,63
+    1BEB: 08       PUSH  A
+    1BEC: 50 80    MOV   A,128
+    1BEE: 08       PUSH  A
+    1BEF: 50 00    MOV   A,0
+    1BF1: 08       PUSH  A
+    1BF2: 08       PUSH  A
+    1BF3: 62 D0 00 MOV   REG[208],0
+    1BF6: 7C 22 83 LCALL __fpdiv
+    1BF9: 18       POP   A
+    1BFA: 62 D0 00 MOV   REG[208],0
+    1BFD: 53 27    MOV   [delta_f+3],A
+    1BFF: 18       POP   A
+    1C00: 53 26    MOV   [delta_f+2],A
+    1C02: 18       POP   A
+    1C03: 53 25    MOV   [delta_f+1],A
+    1C05: 18       POP   A
+    1C06: 53 24    MOV   [delta_f],A
+    1C08: 38 FC    ADD   SP,252
+*NODE:8:SW
+    1C0A: 50 00    MOV   A,0
+    1C0C: 08       PUSH  A
+    1C0D: 50 0A    MOV   A,10
+    1C0F: 08       PUSH  A
+    1C10: 51 24    MOV   A,[delta_f]
+    1C12: 08       PUSH  A
+    1C13: 51 25    MOV   A,[delta_f+1]
+    1C15: 08       PUSH  A
+    1C16: 51 26    MOV   A,[delta_f+2]
+    1C18: 08       PUSH  A
+    1C19: 51 27    MOV   A,[delta_f+3]
+    1C1B: 08       PUSH  A
+    1C1C: 62 D0 00 MOV   REG[208],0
+    1C1F: 7C 23 EB LCALL __fp2long
+    1C22: 18       POP   A
+    1C23: 53 1A    MOV   [__r1],A
+    1C25: 18       POP   A
+    1C26: 38 FE    ADD   SP,254
+    1C28: 08       PUSH  A
+    1C29: 51 1A    MOV   A,[__r1]
+    1C2B: 08       PUSH  A
+    1C2C: 50 00    MOV   A,0
+    1C2E: 08       PUSH  A
+    1C2F: 50 28    MOV   A,40
+    1C31: 08       PUSH  A
+    1C32: 7C 24 D7 LCALL _itoa
+    1C35: 38 FA    ADD   SP,250
+*NODE:9:SW
+    1C37: 10       PUSH  X
+    1C38: 7C 06 49 LCALL 0x0649
+*NODE:10:SW
+    1C3B: 50 00    MOV   A,0
+    1C3D: 7C 07 8E LCALL 0x078E
+*NODE:11:SW
+    1C40: 50 00    MOV   A,0
+    1C42: 5C       MOV   X,A
+    1C43: 7C 06 BC LCALL 0x06BC
+*NODE:12:SW
+    1C46: 50 01    MOV   A,1
+    1C48: 08       PUSH  A
+    1C49: 50 54    MOV   A,84
+    1C4B: 5C       MOV   X,A
+    1C4C: 18       POP   A
+    1C4D: 7C 05 3C LCALL 0x053C
+*NODE:13:SW
+    1C50: 57 08    MOV   X,8
+    1C52: 50 00    MOV   A,0
+    1C54: 7C 06 BC LCALL 0x06BC
+*NODE:14:SW
+    1C57: 50 00    MOV   A,0
+    1C59: 08       PUSH  A
+    1C5A: 50 28    MOV   A,40
+    1C5C: 5C       MOV   X,A
+    1C5D: 18       POP   A
+    1C5E: 7C 05 78 LCALL 0x0578
+*NODE:15:SW
+    1C61: 50 01    MOV   A,1
+    1C63: 08       PUSH  A
+    1C64: 50 50    MOV   A,80
+    1C66: 5C       MOV   X,A
+    1C67: 18       POP   A
+    1C68: 7C 05 3C LCALL 0x053C
+    1C6B: 20       POP   X
+*NODE:16:SW
+    1C6C: 71 01    OR    F,1
+*NODE:17:SW
+    1C6E: 62 D0 00 MOV   REG[208],0
+    1C71: 55 31 00 MOV   [i+1],0
+    1C74: 55 30 00 MOV   [i],0
+    1C77: 81 DA    JMP   0x1E52
+*NODE:18:SW
+    1C79: 10       PUSH  X
+    1C7A: 7C 08 72 LCALL 0x0872
+    1C7D: 62 D0 00 MOV   REG[208],0
+    1C80: 20       POP   X
+    1C81: 39 00    CMP   A,0
+    1C83: A0 7F    JZ    0x1D03
+*NODE:19:SW      
+    1C85: 10       PUSH  X
+    1C86: 7C 08 78 LCALL 0x0878
+    1C89: 62 D0 00 MOV   REG[208],0
+    1C8C: 5A 1B    MOV   [__r0],X
+    1C8E: 20       POP   X
+    1C8F: 53 18    MOV   [__r3],A
+    1C91: 51 1B    MOV   A,[__r0]
+    1C93: 53 19    MOV   [__r2],A
+    1C95: 47 19 80 TST   [__r2],128
+    1C98: A0 09    JZ    0x1CA2
+    1C9A: 55 1A FF MOV   [__r1],255
+    1C9D: 55 1B FF MOV   [__r0],255
+    1CA0: 80 0A    JMP   0x1CAB
+    1CA2: 62 D0 00 MOV   REG[208],0
+    1CA5: 55 1A 00 MOV   [__r1],0
+    1CA8: 55 1B 00 MOV   [__r0],0
+    1CAB: 62 D0 00 MOV   REG[208],0
+    1CAE: 51 1B    MOV   A,[__r0]
+    1CB0: 08       PUSH  A
+    1CB1: 51 1A    MOV   A,[__r1]
+    1CB3: 08       PUSH  A
+    1CB4: 51 19    MOV   A,[__r2]
+    1CB6: 08       PUSH  A
+    1CB7: 51 18    MOV   A,[__r3]
+    1CB9: 08       PUSH  A
+    1CBA: 7C 24 6D LCALL __long2fp
+    1CBD: 18       POP   A
+    1CBE: 53 18    MOV   [__r3],A
+    1CC0: 18       POP   A
+    1CC1: 53 19    MOV   [__r2],A
+    1CC3: 18       POP   A
+    1CC4: 53 1A    MOV   [__r1],A
+    1CC6: 18       POP   A
+    1CC7: 53 1B    MOV   [__r0],A
+    1CC9: 62 D0 00 MOV   REG[208],0
+    1CCC: 51 31    MOV   A,[i+1]
+    1CCE: 08       PUSH  A
+    1CCF: 51 30    MOV   A,[i]
+    1CD1: 62 D0 00 MOV   REG[208],0
+    1CD4: 53 17    MOV   [__r4],A
+    1CD6: 18       POP   A
+    1CD7: 53 16    MOV   [__r5],A
+    1CD9: 65 16    ASL   [__r5]
+    1CDB: 6B 17    RLC   [__r4]
+    1CDD: 65 16    ASL   [__r5]
+    1CDF: 6B 17    RLC   [__r4]
+    1CE1: 06 16 00 ADD   [__r5],0
+    1CE4: 0E 17 03 ADC   [__r4],3
+    1CE7: 51 17    MOV   A,[__r4]
+    1CE9: 60 D5    MOV   REG[213],A
+    1CEB: 51 1B    MOV   A,[__r0]
+    1CED: 3F 16    MVI   [__r5],A
+    1CEF: 51 1A    MOV   A,[__r1]
+    1CF1: 3F 16    MVI   [__r5],A
+    1CF3: 51 19    MOV   A,[__r2]
+    1CF5: 3F 16    MVI   [__r5],A
+    1CF7: 51 18    MOV   A,[__r3]
+    1CF9: 3F 16    MVI   [__r5],A
+*NODE:20:SW
+    1CFB: 62 D0 00 MOV   REG[208],0
+    1CFE: 76 31    INC   [i+1]
+    1D00: 0E 30 00 ADC   [i],0
+*NODE:21:SW
+    1D03: 62 D0 00 MOV   REG[208],0
+    1D06: 3C 30 00 CMP   [i],0
+    1D09: B1 48    JNZ   0x1E52
+    1D0B: 3C 31 40 CMP   [i+1],64
+    1D0E: B1 43    JNZ   0x1E52
+*NODE:22:SW
+    1D10: 50 42    MOV   A,66
+    1D12: 08       PUSH  A
+    1D13: 50 80    MOV   A,128
+    1D15: 08       PUSH  A
+    1D16: 50 00    MOV   A,0
+    1D18: 08       PUSH  A
+    1D19: 08       PUSH  A
+    1D1A: 7C 27 1A LCALL _log
+    1D1D: 62 D0 00 MOV   REG[208],0
+    1D20: 51 1B    MOV   A,[__r0]
+    1D22: 54 01    MOV   [X+1],A
+    1D24: 51 1A    MOV   A,[__r1]
+    1D26: 54 02    MOV   [X+2],A
+    1D28: 51 19    MOV   A,[__r2]
+    1D2A: 54 03    MOV   [X+3],A
+    1D2C: 51 18    MOV   A,[__r3]
+    1D2E: 54 04    MOV   [X+4],A
+    1D30: 50 40    MOV   A,64
+    1D32: 08       PUSH  A
+    1D33: 50 00    MOV   A,0
+    1D35: 08       PUSH  A
+    1D36: 08       PUSH  A
+    1D37: 08       PUSH  A
+    1D38: 7C 27 1A LCALL _log
+    1D3B: 38 F8    ADD   SP,248
+    1D3D: 50 01    MOV   A,1
+    1D3F: 08       PUSH  A
+    1D40: 50 00    MOV   A,0
+    1D42: 08       PUSH  A
+    1D43: 50 03    MOV   A,3
+    1D45: 08       PUSH  A
+    1D46: 50 00    MOV   A,0
+    1D48: 08       PUSH  A
+    1D49: 62 D0 00 MOV   REG[208],0
+    1D4C: 51 1B    MOV   A,[__r0]
+    1D4E: 08       PUSH  A
+    1D4F: 51 1A    MOV   A,[__r1]
+    1D51: 08       PUSH  A
+    1D52: 51 19    MOV   A,[__r2]
+    1D54: 08       PUSH  A
+    1D55: 51 18    MOV   A,[__r3]
+    1D57: 08       PUSH  A
+    1D58: 52 01    MOV   A,[X+1]
+    1D5A: 08       PUSH  A
+    1D5B: 52 02    MOV   A,[X+2]
+    1D5D: 08       PUSH  A
+    1D5E: 52 03    MOV   A,[X+3]
+    1D60: 08       PUSH  A
+    1D61: 52 04    MOV   A,[X+4]
+    1D63: 08       PUSH  A
+    1D64: 7C 22 83 LCALL __fpdiv
+    1D67: 18       POP   A
+    1D68: 53 18    MOV   [__r3],A
+    1D6A: 18       POP   A
+    1D6B: 53 19    MOV   [__r2],A
+    1D6D: 18       POP   A
+    1D6E: 53 1A    MOV   [__r1],A
+    1D70: 18       POP   A
+    1D71: 38 FC    ADD   SP,252
+    1D73: 08       PUSH  A
+    1D74: 51 1A    MOV   A,[__r1]
+    1D76: 08       PUSH  A
+    1D77: 51 19    MOV   A,[__r2]
+    1D79: 08       PUSH  A
+    1D7A: 51 18    MOV   A,[__r3]
+    1D7C: 08       PUSH  A
+    1D7D: 7C 23 EB LCALL __fp2long
+    1D80: 18       POP   A
+    1D81: 53 18    MOV   [__r3],A
+    1D83: 18       POP   A
+    1D84: 53 19    MOV   [__r2],A
+    1D86: 18       POP   A
+    1D87: 53 1A    MOV   [__r1],A
+    1D89: 18       POP   A
+    1D8A: 08       PUSH  A
+    1D8B: 51 1A    MOV   A,[__r1]
+    1D8D: 08       PUSH  A
+    1D8E: 51 19    MOV   A,[__r2]
+    1D90: 08       PUSH  A
+    1D91: 51 18    MOV   A,[__r3]
+    1D93: 08       PUSH  A
+    1D94: 50 00    MOV   A,0
+    1D96: 08       PUSH  A
+    1D97: 50 01    MOV   A,1
+    1D99: 08       PUSH  A
+    1D9A: 7C 08 9E LCALL _FFT
+    1D9D: 38 F6    ADD   SP,246
+*NODE:23:SW
+    1D9F: 9X 5E    CALL  _UART_print_mod
+*NODE:24:SW
+    1DA1: 9X 82    CALL  _UART_print_re_imm
+*NODE:25:SW
+    1DA3: 9X 64    CALL  _LCD_print
+*NODE:26:SW
+    1DA5: 62 D0 00 MOV   REG[208],0
+    1DA8: 55 31 00 MOV   [i+1],0
+    1DAB: 55 30 00 MOV   [i],0
+    1DAE: 80 8D    JMP   0x1E3C
+*NODE:27:SW
+    1DB0: 62 D0 00 MOV   REG[208],0
+    1DB3: 51 31    MOV   A,[i+1]
+    1DB5: 08       PUSH  A
+    1DB6: 51 30    MOV   A,[i]
+    1DB8: 62 D0 00 MOV   REG[208],0
+    1DBB: 53 1B    MOV   [__r0],A
+    1DBD: 18       POP   A
+    1DBE: 53 1A    MOV   [__r1],A
+    1DC0: 65 1A    ASL   [__r1]
+    1DC2: 6B 1B    RLC   [__r0]
+    1DC4: 65 1A    ASL   [__r1]
+    1DC6: 6B 1B    RLC   [__r0]
+    1DC8: 06 1A 00 ADD   [__r1],0
+    1DCB: 0E 1B 02 ADC   [__r0],2
+    1DCE: 51 1B    MOV   A,[__r0]
+    1DD0: 60 D5    MOV   REG[213],A
+    1DD2: 50 00    MOV   A,0
+    1DD4: 3F 1A    MVI   [__r1],A
+    1DD6: 3F 1A    MVI   [__r1],A
+    1DD8: 3F 1A    MVI   [__r1],A
+    1DDA: 3F 1A    MVI   [__r1],A
+*NODE:28:SW
+    1DDC: 62 D0 00 MOV   REG[208],0
+    1DDF: 51 31    MOV   A,[i+1]
+    1DE1: 08       PUSH  A
+    1DE2: 51 30    MOV   A,[i]
+    1DE4: 62 D0 00 MOV   REG[208],0
+    1DE7: 53 1B    MOV   [__r0],A
+    1DE9: 18       POP   A
+    1DEA: 53 1A    MOV   [__r1],A
+    1DEC: 65 1A    ASL   [__r1]
+    1DEE: 6B 1B    RLC   [__r0]
+    1DF0: 65 1A    ASL   [__r1]
+    1DF2: 6B 1B    RLC   [__r0]
+    1DF4: 06 1A 00 ADD   [__r1],0
+    1DF7: 0E 1B 03 ADC   [__r0],3
+    1DFA: 51 1B    MOV   A,[__r0]
+    1DFC: 60 D5    MOV   REG[213],A
+    1DFE: 50 00    MOV   A,0
+    1E00: 3F 1A    MVI   [__r1],A
+    1E02: 3F 1A    MVI   [__r1],A
+    1E04: 3F 1A    MVI   [__r1],A
+    1E06: 3F 1A    MVI   [__r1],A
+*NODE:29:SW
+    1E08: 62 D0 00 MOV   REG[208],0
+    1E0B: 51 31    MOV   A,[i+1]
+    1E0D: 08       PUSH  A
+    1E0E: 51 30    MOV   A,[i]
+    1E10: 62 D0 00 MOV   REG[208],0
+    1E13: 53 1B    MOV   [__r0],A
+    1E15: 18       POP   A
+    1E16: 53 1A    MOV   [__r1],A
+    1E18: 65 1A    ASL   [__r1]
+    1E1A: 6B 1B    RLC   [__r0]
+    1E1C: 65 1A    ASL   [__r1]
+    1E1E: 6B 1B    RLC   [__r0]
+    1E20: 06 1A 00 ADD   [__r1],0
+    1E23: 0E 1B 01 ADC   [__r0],1
+    1E26: 51 1B    MOV   A,[__r0]
+    1E28: 60 D5    MOV   REG[213],A
+    1E2A: 50 00    MOV   A,0
+    1E2C: 3F 1A    MVI   [__r1],A
+    1E2E: 3F 1A    MVI   [__r1],A
+    1E30: 3F 1A    MVI   [__r1],A
+    1E32: 3F 1A    MVI   [__r1],A
+    1E34: 62 D0 00 MOV   REG[208],0
+    1E37: 76 31    INC   [i+1]
+    1E39: 0E 30 00 ADC   [i],0
+    1E3C: 62 D0 00 MOV   REG[208],0
+    1E3F: 51 31    MOV   A,[i+1]
+    1E41: 11 40    SUB   A,64
+    1E43: 51 30    MOV   A,[i]
+    1E45: 19 00    SBB   A,0
+    1E47: CF 68    JC    0x1DB0
+*NODE:30:SW
+    1E49: 62 D0 00 MOV   REG[208],0
+    1E4C: 55 31 00 MOV   [i+1],0
+    1E4F: 55 30 00 MOV   [i],0
+    1E52: 8E 26    JMP   0x1C79
+*NODE:31:SW
+    1E54: 38 FB    ADD   SP,251
+    1E56: 20       POP   X
+    1E57: 8F FF    JMP   0x1E57
+*NODE:32:SW
+    1E59: 5A 0F    MOV   [__rX],X
+    1E5B: 4F       MOV   X,SP
+    1E5C: 38 09    ADD   SP,9
+    1E5E: 56 08 00 MOV   [X+8],0
+    1E61: 52 FD    MOV   A,[X-3]
+    1E63: 54 07    MOV   [X+7],A
+    1E65: 52 FC    MOV   A,[X-4]
+    1E67: 54 06    MOV   [X+6],A
+    1E69: 56 05 00 MOV   [X+5],0
+    1E6C: 56 04 00 MOV   [X+4],0
+    1E6F: 56 00 05 MOV   [X+0],5
+    1E72: 69 06    ASR   [X+6]
+    1E74: 6F 07    RRC   [X+7]
+    1E76: 6F 08    RRC   [X+8]
+    1E78: 7B 00    DEC   [X+0]
+    1E7A: BF F7    JNZ   0x1E72
+    1E7C: 27 06 07 AND   [X+6],7
+    1E7F: 56 03 00 MOV   [X+3],0
+    1E82: 52 FB    MOV   A,[X-5]
+    1E84: 54 02    MOV   [X+2],A
+    1E86: 52 FA    MOV   A,[X-6]
+    1E88: 54 01    MOV   [X+1],A
+    1E8A: 56 00 05 MOV   [X+0],5
+    1E8D: 69 01    ASR   [X+1]
+    1E8F: 6F 02    RRC   [X+2]
+    1E91: 6F 03    RRC   [X+3]
+    1E93: 7B 00    DEC   [X+0]
+    1E95: BF F7    JNZ   0x1E8D
+    1E97: 27 01 07 AND   [X+1],7
+    1E9A: 56 00 10 MOV   [X+0],16
+    1E9D: 66 08    ASL   [X+8]
+    1E9F: 6C 07    RLC   [X+7]
+    1EA1: 6C 06    RLC   [X+6]
+    1EA3: 6C 05    RLC   [X+5]
+    1EA5: 6C 04    RLC   [X+4]
+    1EA7: D0 0F    JNC   0x1EB7
+    1EA9: 52 03    MOV   A,[X+3]
+    1EAB: 05 06    ADD   [X+6],A
+    1EAD: 52 02    MOV   A,[X+2]
+    1EAF: 0D 05    ADC   [X+5],A
+    1EB1: 52 01    MOV   A,[X+1]
+    1EB3: 0D 04    ADC   [X+4],A
+    1EB5: 80 0D    JMP   0x1EC3
+    1EB7: 52 03    MOV   A,[X+3]
+    1EB9: 15 06    SUB   [X+6],A
+    1EBB: 52 02    MOV   A,[X+2]
+    1EBD: 1D 05    SBB   [X+5],A
+    1EBF: 52 01    MOV   A,[X+1]
+    1EC1: 1D 04    SBB   [X+4],A
+    1EC3: 48 04 80 TST   [X+4],128
+    1EC6: B0 04    JNZ   0x1ECB
+    1EC8: 2F 08 01 OR    [X+8],1
+    1ECB: 7B 00    DEC   [X+0]
+    1ECD: BF CF    JNZ   0x1E9D
+    1ECF: 52 08    MOV   A,[X+8]
+    1ED1: 54 FD    MOV   [X-3],A
+    1ED3: 52 07    MOV   A,[X+7]
+    1ED5: 54 FC    MOV   [X-4],A
+    1ED7: 48 04 80 TST   [X+4],128
+    1EDA: A0 0D    JZ    0x1EE8
+    1EDC: 52 03    MOV   A,[X+3]
+    1EDE: 05 06    ADD   [X+6],A
+    1EE0: 52 02    MOV   A,[X+2]
+    1EE2: 0D 05    ADC   [X+5],A
+    1EE4: 52 01    MOV   A,[X+1]
+    1EE6: 0D 04    ADC   [X+4],A
+    1EE8: 56 00 03 MOV   [X+0],3
+    1EEB: 69 04    ASR   [X+4]
+    1EED: 6F 05    RRC   [X+5]
+    1EEF: 6F 06    RRC   [X+6]
+    1EF1: 7B 00    DEC   [X+0]
+    1EF3: BF F7    JNZ   0x1EEB
+    1EF5: 52 05    MOV   A,[X+5]
+    1EF7: 54 FA    MOV   [X-6],A
+    1EF9: 52 06    MOV   A,[X+6]
+    1EFB: 54 FB    MOV   [X-5],A
+    1EFD: 38 F7    ADD   SP,247
+    1EFF: 58 0F    MOV   X,[__rX]
+    1F01: 7F       RET   
+*NODE:33:SW
+    1F02: 52 01    MOV   A,[X+1]
+    1F04: 2B 02    OR    A,[X+2]
+    1F06: 2B 03    OR    A,[X+3]
+    1F08: 2B 04    OR    A,[X+4]
+    1F0A: 21 FF    AND   A,255
+    1F0C: 7F       RET   
+*NODE:34:SW
+    1F0D: 52 01    MOV   A,[X+1]
+    1F0F: 54 00    MOV   [X+0],A
+    1F11: 9X EF    CALL  __SPFloat_is_zero
+    1F13: A0 19    JZ    0x1F2D
+    1F15: 52 02    MOV   A,[X+2]
+    1F17: 64       ASL   A
+    1F18: 52 01    MOV   A,[X+1]
+    1F1A: 6A       RLC   A
+    1F1B: 11 7F    SUB   A,127
+    1F1D: 54 00    MOV   [X+0],A
+    1F1F: 56 01 00 MOV   [X+1],0
+    1F22: 27 02 7F AND   [X+2],127
+    1F25: 3D 00 81 CMP   [X+0],129
+    1F28: A0 04    JZ    0x1F2D
+    1F2A: 2F 02 80 OR    [X+2],128
+    1F2D: 7F       RET   
+*NODE:35:SW
+    1F2E: 52 01    MOV   A,[X+1]
+    1F30: 54 00    MOV   [X+0],A
+    1F32: 9X CE    CALL  __SPFloat_is_zero
+    1F34: B0 05    JNZ   0x1F3A
+    1F36: 50 00    MOV   A,0
+    1F38: 80 39    JMP   0x1F72
+    1F3A: 52 02    MOV   A,[X+2]
+    1F3C: 64       ASL   A
+    1F3D: 52 01    MOV   A,[X+1]
+    1F3F: 08       PUSH  A
+    1F40: 6A       RLC   A
+    1F41: 11 7F    SUB   A,127
+    1F43: 54 00    MOV   [X+0],A
+    1F45: 56 01 00 MOV   [X+1],0
+    1F48: 27 02 7F AND   [X+2],127
+    1F4B: 3D 00 80 CMP   [X+0],128
+    1F4E: A0 04    JZ    0x1F53
+    1F50: 2F 02 80 OR    [X+2],128
+    1F53: 18       POP   A
+    1F54: 08       PUSH  A
+    1F55: 21 80    AND   A,128
+    1F57: A0 19    JZ    0x1F71
+    1F59: 37 01 FF XOR   [X+1],255
+    1F5C: 37 02 FF XOR   [X+2],255
+    1F5F: 37 03 FF XOR   [X+3],255
+    1F62: 37 04 FF XOR   [X+4],255
+    1F65: 07 04 01 ADD   [X+4],1
+    1F68: 0F 03 00 ADC   [X+3],0
+    1F6B: 0F 02 00 ADC   [X+2],0
+    1F6E: 0F 01 00 ADC   [X+1],0
+    1F71: 18       POP   A
+    1F72: 7F       RET   
+*NODE:36:SW
+    1F73: 08       PUSH  A
+    1F74: 10       PUSH  X
+    1F75: 75       INC   X
+    1F76: 9X DA    CALL  __tst_s32
+    1F78: 20       POP   X
+    1F79: A0 0E    JZ    0x1F88
+    1F7B: 52 00    MOV   A,[X+0]
+    1F7D: 54 01    MOV   [X+1],A
+    1F7F: 66 02    ASL   [X+2]
+    1F81: 18       POP   A
+    1F82: 64       ASL   A
+    1F83: 6F 01    RRC   [X+1]
+    1F85: 6F 02    RRC   [X+2]
+    1F87: 7F       RET   
+    1F88: 18       POP   A
+    1F89: 7F       RET   
+*NODE:37:SW
+    1F8A: 10       PUSH  X
+    1F8B: 08       PUSH  A
+    1F8C: 52 00    MOV   A,[X+0]
+    1F8E: 08       PUSH  A
+    1F8F: 4F       MOV   X,SP
+    1F90: 03 FE    ADD   A,[X-2]
+    1F92: 08       PUSH  A
+    1F93: 52 FF    MOV   A,[X-1]
+    1F95: 33 FE    XOR   A,[X-2]
+    1F97: 21 80    AND   A,128
+    1F99: B0 39    JNZ   0x1FD3
+    1F9B: 52 00    MOV   A,[X+0]
+    1F9D: 33 FF    XOR   A,[X-1]
+    1F9F: 21 80    AND   A,128
+    1FA1: A0 31    JZ    0x1FD3
+    1FA3: 48 FF 80 TST   [X-1],128
+    1FA6: A0 16    JZ    0x1FBD
+    1FA8: 59 FD    MOV   X,[X-3]
+    1FAA: 56 00 00 MOV   [X+0],0
+    1FAD: 56 01 00 MOV   [X+1],0
+    1FB0: 56 02 00 MOV   [X+2],0
+    1FB3: 56 03 00 MOV   [X+3],0
+    1FB6: 56 04 00 MOV   [X+4],0
+    1FB9: 50 FF    MOV   A,255
+    1FBB: 80 14    JMP   0x1FD0
+    1FBD: 59 FD    MOV   X,[X-3]
+    1FBF: 56 00 FE MOV   [X+0],254
+    1FC2: 56 01 00 MOV   [X+1],0
+    1FC5: 56 02 FF MOV   [X+2],255
+    1FC8: 56 03 FF MOV   [X+3],255
+    1FCB: 56 04 FF MOV   [X+4],255
+    1FCE: 50 01    MOV   A,1
+    1FD0: 38 FC    ADD   SP,252
+    1FD2: 7F       RET   
+    1FD3: 18       POP   A
+    1FD4: 38 FE    ADD   SP,254
+    1FD6: 20       POP   X
+    1FD7: 01 7F    ADD   A,127
+    1FD9: 54 00    MOV   [X+0],A
+    1FDB: 50 00    MOV   A,0
+    1FDD: 7F       RET   
+*NODE:38:SW
+    1FDE: 10       PUSH  X
+    1FDF: 75       INC   X
+    1FE0: 9X 70    CALL  __tst_s32
+    1FE2: 20       POP   X
+    1FE3: A0 34    JZ    0x2018
+    1FE5: 48 01 FF TST   [X+1],255
+    1FE8: A0 12    JZ    0x1FFB
+    1FEA: 3D 00 7F CMP   [X+0],127
+    1FED: A0 37    JZ    0x2025
+    1FEF: 69 01    ASR   [X+1]
+    1FF1: 6F 02    RRC   [X+2]
+    1FF3: 6F 03    RRC   [X+3]
+    1FF5: 6F 04    RRC   [X+4]
+    1FF7: 77 00    INC   [X+0]
+    1FF9: 8F EB    JMP   0x1FE5
+    1FFB: 48 02 80 TST   [X+2],128
+    1FFE: B0 17    JNZ   0x2016
+    2000: 3D 00 80 CMP   [X+0],128
+    2003: A0 12    JZ    0x2016
+    2005: 3D 00 81 CMP   [X+0],129
+    2008: A0 10    JZ    0x2019
+    200A: 66 04    ASL   [X+4]
+    200C: 6C 03    RLC   [X+3]
+    200E: 6C 02    RLC   [X+2]
+    2010: 6C 01    RLC   [X+1]
+    2012: 7B 00    DEC   [X+0]
+    2014: 8F E6    JMP   0x1FFB
+    2016: 50 01    MOV   A,1
+    2018: 7F       RET   
+    2019: 50 00    MOV   A,0
+    201B: 54 01    MOV   [X+1],A
+    201D: 54 02    MOV   [X+2],A
+    201F: 54 03    MOV   [X+3],A
+    2021: 54 04    MOV   [X+4],A
+    2023: 8F F4    JMP   0x2018
+    2025: 56 01 00 MOV   [X+1],0
+    2028: 50 FF    MOV   A,255
+    202A: 54 02    MOV   [X+2],A
+    202C: 54 03    MOV   [X+3],A
+    202E: 54 04    MOV   [X+4],A
+    2030: 8F E7    JMP   0x2018
+*NODE:39:SW
+    2032: 39 00    CMP   A,0
+    2034: A0 1C    JZ    0x2051
+    2036: 39 20    CMP   A,32
+    2038: D0 0E    JNC   0x2047
+    203A: 69 00    ASR   [X+0]
+    203C: 6F 01    RRC   [X+1]
+    203E: 6F 02    RRC   [X+2]
+    2040: 6F 03    RRC   [X+3]
+    2042: 78       DEC   A
+    2043: BF F6    JNZ   0x203A
+    2045: 80 0B    JMP   0x2051
+    2047: 50 00    MOV   A,0
+    2049: 54 00    MOV   [X+0],A
+    204B: 54 01    MOV   [X+1],A
+    204D: 54 02    MOV   [X+2],A
+    204F: 54 03    MOV   [X+3],A
+    2051: 7F       RET   
+*NODE:40:SW
+    2052: 48 00 FF TST   [X+0],255
+    2055: B0 10    JNZ   0x2066
+    2057: 48 01 FF TST   [X+1],255
+    205A: B0 0B    JNZ   0x2066
+    205C: 48 02 FF TST   [X+2],255
+    205F: B0 06    JNZ   0x2066
+    2061: 48 03 FF TST   [X+3],255
+    2064: A0 0B    JZ    0x2070
+    2066: 48 00 80 TST   [X+0],128
+    2069: B0 04    JNZ   0x206E
+    206B: 50 01    MOV   A,1
+    206D: 7F       RET   
+    206E: 50 FF    MOV   A,255
+    2070: 7F       RET   
+*NODE:41:SW
+    2071: 37 00 FF XOR   [X+0],255
+    2074: 37 01 FF XOR   [X+1],255
+    2077: 37 02 FF XOR   [X+2],255
+    207A: 37 03 FF XOR   [X+3],255
+    207D: 0F 03 00 ADC   [X+3],0
+    2080: 0F 02 00 ADC   [X+2],0
+    2083: 0F 01 00 ADC   [X+1],0
+    2086: 07 00 01 ADD   [X+0],1
+    2089: 7F       RET   
+*NODE:42:SW
+    208A: 9X 76    CALL  __SPFloat_is_zero
+    208C: A0 04    JZ    0x2091
+    208E: 37 00 80 XOR   [X+0],128
+    2091: 7F       RET   
+*NODE:43:SW
+    2092: 10       PUSH  X
+    2093: 4F       MOV   X,SP
+    2094: 52 FB    MOV   A,[X-5]
+    2096: 33 FC    XOR   A,[X-4]
+    2098: 21 80    AND   A,128
+    209A: B0 09    JNZ   0x20A4
+    209C: 52 FB    MOV   A,[X-5]
+    209E: 33 FA    XOR   A,[X-6]
+    20A0: 21 80    AND   A,128
+    20A2: 20       POP   X
+    20A3: 7F       RET   
+    20A4: 50 00    MOV   A,0
+    20A6: 8F FB    JMP   0x20A2
+*NODE:44:SW
+    20A8: 10       PUSH  X
+    20A9: 4F       MOV   X,SP
+    20AA: 4B       SWAP  A,X
+    20AB: 01 F5    ADD   A,245
+    20AD: 4B       SWAP  A,X
+    20AE: 9X A2    CALL  __tst_s32
+    20B0: A0 04    JZ    0x20B5
+    20B2: 37 00 80 XOR   [X+0],128
+    20B5: 20       POP   X
+*NODE:45:SW
+    20B6: 10       PUSH  X
+    20B7: 4F       MOV   X,SP
+    20B8: 4B       SWAP  A,X
+    20B9: 01 F5    ADD   A,245
+    20BB: 4B       SWAP  A,X
+    20BC: 9X 94    CALL  __tst_s32
+    20BE: A0 D9    JZ    0x2198
+    20C0: 4F       MOV   X,SP
+    20C1: 4B       SWAP  A,X
+    20C2: 01 F9    ADD   A,249
+    20C4: 4B       SWAP  A,X
+    20C5: 9X 8B    CALL  __tst_s32
+    20C7: B0 14    JNZ   0x20DC
+    20C9: 4F       MOV   X,SP
+    20CA: 52 F5    MOV   A,[X-11]
+    20CC: 54 F9    MOV   [X-7],A
+    20CE: 52 F6    MOV   A,[X-10]
+    20D0: 54 FA    MOV   [X-6],A
+    20D2: 52 F7    MOV   A,[X-9]
+    20D4: 54 FB    MOV   [X-5],A
+    20D6: 52 F8    MOV   A,[X-8]
+    20D8: 54 FC    MOV   [X-4],A
+    20DA: 80 BD    JMP   0x2198
+    20DC: 4F       MOV   X,SP
+    20DD: 38 0B    ADD   SP,11
+    20DF: 52 F9    MOV   A,[X-7]
+    20E1: 54 01    MOV   [X+1],A
+    20E3: 52 FA    MOV   A,[X-6]
+    20E5: 54 02    MOV   [X+2],A
+    20E7: 52 FB    MOV   A,[X-5]
+    20E9: 54 03    MOV   [X+3],A
+    20EB: 52 FC    MOV   A,[X-4]
+    20ED: 54 04    MOV   [X+4],A
+    20EF: 52 F5    MOV   A,[X-11]
+    20F1: 54 07    MOV   [X+7],A
+    20F3: 52 F6    MOV   A,[X-10]
+    20F5: 54 08    MOV   [X+8],A
+    20F7: 52 F7    MOV   A,[X-9]
+    20F9: 54 09    MOV   [X+9],A
+    20FB: 52 F8    MOV   A,[X-8]
+    20FD: 54 0A    MOV   [X+10],A
+    20FF: 9X 2D    CALL  __unpack_s
+    2101: 10       PUSH  X
+    2102: 4B       SWAP  A,X
+    2103: 01 06    ADD   A,6
+    2105: 4B       SWAP  A,X
+    2106: 9X 26    CALL  __unpack_s
+    2108: 20       POP   X
+    2109: 52 00    MOV   A,[X+0]
+    210B: 13 06    SUB   A,[X+6]
+    210D: A0 3A    JZ    0x2148
+    210F: 08       PUSH  A
+    2110: 52 06    MOV   A,[X+6]
+    2112: 73       CPL   A
+    2113: 74       INC   A
+    2114: 08       PUSH  A
+    2115: 52 00    MOV   A,[X+0]
+    2117: 08       PUSH  A
+    2118: 9X 78    CALL  __overflow
+    211A: 38 FE    ADD   SP,254
+    211C: A0 08    JZ    0x2125
+    211E: 18       POP   A
+    211F: 39 80    CMP   A,128
+    2121: C0 1A    JC    0x213C
+    2123: 80 72    JMP   0x2196
+    2125: 18       POP   A
+    2126: 39 80    CMP   A,128
+    2128: D0 07    JNC   0x2130
+    212A: 39 18    CMP   A,24
+    212C: D0 69    JNC   0x2196
+    212E: 80 11    JMP   0x2140
+    2130: 39 E9    CMP   A,233
+    2132: C0 09    JC    0x213C
+    2134: 73       CPL   A
+    2135: 74       INC   A
+    2136: 05 00    ADD   [X+0],A
+    2138: 10       PUSH  X
+    2139: 75       INC   X
+    213A: 80 0A    JMP   0x2145
+    213C: 38 F5    ADD   SP,245
+    213E: 8F 8A    JMP   0x20C9
+    2140: 10       PUSH  X
+    2141: 4B       SWAP  A,X
+    2142: 01 07    ADD   A,7
+    2144: 4B       SWAP  A,X
+    2145: 9X EB    CALL  __asr_32
+    2147: 20       POP   X
+    2148: 52 0A    MOV   A,[X+10]
+    214A: 05 04    ADD   [X+4],A
+    214C: 52 09    MOV   A,[X+9]
+    214E: 0D 03    ADC   [X+3],A
+    2150: 52 08    MOV   A,[X+8]
+    2152: 0D 02    ADC   [X+2],A
+    2154: 52 07    MOV   A,[X+7]
+    2156: 0D 01    ADC   [X+1],A
+    2158: 52 01    MOV   A,[X+1]
+    215A: 54 05    MOV   [X+5],A
+    215C: 39 80    CMP   A,128
+    215E: C0 19    JC    0x2178
+    2160: 50 00    MOV   A,0
+    2162: 13 04    SUB   A,[X+4]
+    2164: 54 04    MOV   [X+4],A
+    2166: 50 00    MOV   A,0
+    2168: 1B 03    SBB   A,[X+3]
+    216A: 54 03    MOV   [X+3],A
+    216C: 50 00    MOV   A,0
+    216E: 1B 02    SBB   A,[X+2]
+    2170: 54 02    MOV   [X+2],A
+    2172: 50 00    MOV   A,0
+    2174: 1B 01    SBB   A,[X+1]
+    2176: 54 01    MOV   [X+1],A
+    2178: 9X 64    CALL  __normalize
+    217A: A0 0B    JZ    0x2186
+    217C: 10       PUSH  X
+    217D: 50 7F    MOV   A,127
+    217F: 05 00    ADD   [X+0],A
+    2181: 52 05    MOV   A,[X+5]
+    2183: 9X EE    CALL  __pack
+    2185: 20       POP   X
+    2186: 52 01    MOV   A,[X+1]
+    2188: 54 F9    MOV   [X-7],A
+    218A: 52 02    MOV   A,[X+2]
+    218C: 54 FA    MOV   [X-6],A
+    218E: 52 03    MOV   A,[X+3]
+    2190: 54 FB    MOV   [X-5],A
+    2192: 52 04    MOV   A,[X+4]
+    2194: 54 FC    MOV   [X-4],A
+    2196: 38 F5    ADD   SP,245
+    2198: 20       POP   X
+    2199: 7F       RET   
+*NODE:46:SW
+    219A: 10       PUSH  X
+    219B: 4F       MOV   X,SP
+    219C: 4B       SWAP  A,X
+    219D: 01 F5    ADD   A,245
+    219F: 4B       SWAP  A,X
+    21A0: 9X B0    CALL  __tst_s32
+    21A2: 4F       MOV   X,SP
+    21A3: A0 0C    JZ    0x21B0
+    21A5: 4B       SWAP  A,X
+    21A6: 01 F9    ADD   A,249
+    21A8: 4B       SWAP  A,X
+    21A9: 9X A7    CALL  __tst_s32
+    21AB: 4F       MOV   X,SP
+    21AC: A0 D4    JZ    0x2281
+    21AE: 80 0F    JMP   0x21BE
+    21B0: 56 F9 00 MOV   [X-7],0
+    21B3: 56 FA 00 MOV   [X-6],0
+    21B6: 56 FB 00 MOV   [X-5],0
+    21B9: 56 FC 00 MOV   [X-4],0
+    21BC: 80 C4    JMP   0x2281
+    21BE: 38 0E    ADD   SP,14
+    21C0: 52 F5    MOV   A,[X-11]
+    21C2: 54 0A    MOV   [X+10],A
+    21C4: 54 01    MOV   [X+1],A
+    21C6: 52 F6    MOV   A,[X-10]
+    21C8: 54 0B    MOV   [X+11],A
+    21CA: 52 F7    MOV   A,[X-9]
+    21CC: 54 0C    MOV   [X+12],A
+    21CE: 52 F8    MOV   A,[X-8]
+    21D0: 54 0D    MOV   [X+13],A
+    21D2: 52 F9    MOV   A,[X-7]
+    21D4: 54 03    MOV   [X+3],A
+    21D6: 35 01    XOR   [X+1],A
+    21D8: 52 FA    MOV   A,[X-6]
+    21DA: 54 04    MOV   [X+4],A
+    21DC: 52 FB    MOV   A,[X-5]
+    21DE: 54 05    MOV   [X+5],A
+    21E0: 52 FC    MOV   A,[X-4]
+    21E2: 54 06    MOV   [X+6],A
+    21E4: 10       PUSH  X
+    21E5: 4B       SWAP  A,X
+    21E6: 01 09    ADD   A,9
+    21E8: 4B       SWAP  A,X
+    21E9: 9X 22    CALL  __unpack_u
+    21EB: 20       POP   X
+    21EC: 52 09    MOV   A,[X+9]
+    21EE: 54 00    MOV   [X+0],A
+    21F0: 10       PUSH  X
+    21F1: 4B       SWAP  A,X
+    21F2: 01 02    ADD   A,2
+    21F4: 4B       SWAP  A,X
+    21F5: 9X 16    CALL  __unpack_u
+    21F7: 20       POP   X
+    21F8: 56 07 00 MOV   [X+7],0
+    21FB: 56 08 00 MOV   [X+8],0
+    21FE: 56 09 00 MOV   [X+9],0
+    2201: 56 0A 00 MOV   [X+10],0
+    2204: 50 18    MOV   A,24
+    2206: 08       PUSH  A
+    2207: 70 FB    AND   F,251
+    2209: 6F 07    RRC   [X+7]
+    220B: 6F 08    RRC   [X+8]
+    220D: 6F 09    RRC   [X+9]
+    220F: 6F 0A    RRC   [X+10]
+    2211: 6F 0B    RRC   [X+11]
+    2213: 6F 0C    RRC   [X+12]
+    2215: 6F 0D    RRC   [X+13]
+    2217: D0 11    JNC   0x2229
+    2219: 52 06    MOV   A,[X+6]
+    221B: 05 0A    ADD   [X+10],A
+    221D: 52 05    MOV   A,[X+5]
+    221F: 0D 09    ADC   [X+9],A
+    2221: 52 04    MOV   A,[X+4]
+    2223: 0D 08    ADC   [X+8],A
+    2225: 50 00    MOV   A,0
+    2227: 0D 07    ADC   [X+7],A
+    2229: 18       POP   A
+    222A: 78       DEC   A
+    222B: BF DA    JNZ   0x2206
+    222D: 70 FB    AND   F,251
+    222F: 6F 07    RRC   [X+7]
+    2231: 6F 08    RRC   [X+8]
+    2233: 6F 09    RRC   [X+9]
+    2235: 6F 0A    RRC   [X+10]
+    2237: 6F 0B    RRC   [X+11]
+    2239: 10       PUSH  X
+    223A: 52 00    MOV   A,[X+0]
+    223C: 4B       SWAP  A,X
+    223D: 01 02    ADD   A,2
+    223F: 4B       SWAP  A,X
+    2240: 7C 1F 8A LCALL __add_FP_exp
+    2243: B0 28    JNZ   0x226C
+    2245: 20       POP   X
+    2246: 48 08 80 TST   [X+8],128
+    2249: A0 05    JZ    0x224F
+    224B: 77 02    INC   [X+2]
+    224D: 80 09    JMP   0x2257
+    224F: 66 0B    ASL   [X+11]
+    2251: 6C 0A    RLC   [X+10]
+    2253: 6C 09    RLC   [X+9]
+    2255: 6C 08    RLC   [X+8]
+    2257: 52 08    MOV   A,[X+8]
+    2259: 54 04    MOV   [X+4],A
+    225B: 52 09    MOV   A,[X+9]
+    225D: 54 05    MOV   [X+5],A
+    225F: 52 0A    MOV   A,[X+10]
+    2261: 54 06    MOV   [X+6],A
+    2263: 10       PUSH  X
+    2264: 52 01    MOV   A,[X+1]
+    2266: 08       PUSH  A
+    2267: 4B       SWAP  A,X
+    2268: 01 02    ADD   A,2
+    226A: 4B       SWAP  A,X
+    226B: 18       POP   A
+    226C: 9X 05    CALL  __pack
+    226E: 20       POP   X
+    226F: 52 03    MOV   A,[X+3]
+    2271: 54 F9    MOV   [X-7],A
+    2273: 52 04    MOV   A,[X+4]
+    2275: 54 FA    MOV   [X-6],A
+    2277: 52 05    MOV   A,[X+5]
+    2279: 54 FB    MOV   [X-5],A
+    227B: 52 06    MOV   A,[X+6]
+    227D: 54 FC    MOV   [X-4],A
+    227F: 38 F2    ADD   SP,242
+    2281: 20       POP   X
+    2282: 7F       RET   
+*NODE:47:SW
+    2283: 10       PUSH  X
+    2284: 4F       MOV   X,SP
+    2285: 4B       SWAP  A,X
+    2286: 01 F9    ADD   A,249
+    2288: 4B       SWAP  A,X
+    2289: 9X C7    CALL  __tst_s32
+    228B: 4F       MOV   X,SP
+    228C: A0 FD    JZ    0x238A
+    228E: 4B       SWAP  A,X
+    228F: 01 F5    ADD   A,245
+    2291: 4B       SWAP  A,X
+    2292: 9X BE    CALL  __tst_s32
+    2294: 4F       MOV   X,SP
+    2295: A0 E0    JZ    0x2376
+    2297: 52 F9    MOV   A,[X-7]
+    2299: 33 F5    XOR   A,[X-11]
+    229B: 38 0F    ADD   SP,15
+    229D: 54 00    MOV   [X+0],A
+    229F: 52 F5    MOV   A,[X-11]
+    22A1: 54 02    MOV   [X+2],A
+    22A3: 52 F6    MOV   A,[X-10]
+    22A5: 54 03    MOV   [X+3],A
+    22A7: 52 F7    MOV   A,[X-9]
+    22A9: 54 04    MOV   [X+4],A
+    22AB: 52 F8    MOV   A,[X-8]
+    22AD: 54 05    MOV   [X+5],A
+    22AF: 52 F9    MOV   A,[X-7]
+    22B1: 54 08    MOV   [X+8],A
+    22B3: 52 FA    MOV   A,[X-6]
+    22B5: 54 09    MOV   [X+9],A
+    22B7: 52 FB    MOV   A,[X-5]
+    22B9: 54 0A    MOV   [X+10],A
+    22BB: 52 FC    MOV   A,[X-4]
+    22BD: 54 0B    MOV   [X+11],A
+    22BF: 10       PUSH  X
+    22C0: 4B       SWAP  A,X
+    22C1: 01 07    ADD   A,7
+    22C3: 4B       SWAP  A,X
+    22C4: 9X 47    CALL  __unpack_u
+    22C6: 20       POP   X
+    22C7: 52 07    MOV   A,[X+7]
+    22C9: 54 06    MOV   [X+6],A
+    22CB: 10       PUSH  X
+    22CC: 4B       SWAP  A,X
+    22CD: 01 01    ADD   A,1
+    22CF: 4B       SWAP  A,X
+    22D0: 9X 3B    CALL  __unpack_u
+    22D2: 20       POP   X
+    22D3: 70 FB    AND   F,251
+    22D5: 6F 08    RRC   [X+8]
+    22D7: 6F 09    RRC   [X+9]
+    22D9: 6F 0A    RRC   [X+10]
+    22DB: 6F 0B    RRC   [X+11]
+    22DD: 56 07 00 MOV   [X+7],0
+    22E0: 56 0C 00 MOV   [X+12],0
+    22E3: 56 0D 00 MOV   [X+13],0
+    22E6: 56 0E 00 MOV   [X+14],0
+    22E9: 50 20    MOV   A,32
+    22EB: 08       PUSH  A
+    22EC: 66 0E    ASL   [X+14]
+    22EE: 6C 0D    RLC   [X+13]
+    22F0: 6C 0C    RLC   [X+12]
+    22F2: 6C 0B    RLC   [X+11]
+    22F4: 6C 0A    RLC   [X+10]
+    22F6: 6C 09    RLC   [X+9]
+    22F8: 6C 08    RLC   [X+8]
+    22FA: 6C 07    RLC   [X+7]
+    22FC: C0 13    JC    0x2310
+    22FE: 52 05    MOV   A,[X+5]
+    2300: 15 0A    SUB   [X+10],A
+    2302: 52 04    MOV   A,[X+4]
+    2304: 1D 09    SBB   [X+9],A
+    2306: 52 03    MOV   A,[X+3]
+    2308: 1D 08    SBB   [X+8],A
+    230A: 52 02    MOV   A,[X+2]
+    230C: 1D 07    SBB   [X+7],A
+    230E: 80 11    JMP   0x2320
+    2310: 52 05    MOV   A,[X+5]
+    2312: 05 0A    ADD   [X+10],A
+    2314: 52 04    MOV   A,[X+4]
+    2316: 0D 09    ADC   [X+9],A
+    2318: 52 03    MOV   A,[X+3]
+    231A: 0D 08    ADC   [X+8],A
+    231C: 52 02    MOV   A,[X+2]
+    231E: 0D 07    ADC   [X+7],A
+    2320: 48 07 80 TST   [X+7],128
+    2323: B0 04    JNZ   0x2328
+    2325: 2F 0E 01 OR    [X+14],1
+    2328: 18       POP   A
+    2329: 78       DEC   A
+    232A: BF C0    JNZ   0x22EB
+    232C: 52 06    MOV   A,[X+6]
+    232E: 54 0A    MOV   [X+10],A
+    2330: 52 01    MOV   A,[X+1]
+    2332: 31 FF    XOR   A,255
+    2334: 74       INC   A
+    2335: 10       PUSH  X
+    2336: 4B       SWAP  A,X
+    2337: 01 0A    ADD   A,10
+    2339: 4B       SWAP  A,X
+    233A: 7C 1F 8A LCALL __add_FP_exp
+    233D: 20       POP   X
+    233E: B0 19    JNZ   0x2358
+    2340: 48 0B FF TST   [X+11],255
+    2343: A0 05    JZ    0x2349
+    2345: 38 F1    ADD   SP,241
+    2347: 80 2E    JMP   0x2376
+    2349: 48 0C 80 TST   [X+12],128
+    234C: B0 0B    JNZ   0x2358
+    234E: 66 0E    ASL   [X+14]
+    2350: 6C 0D    RLC   [X+13]
+    2352: 6C 0C    RLC   [X+12]
+    2354: 6C 0B    RLC   [X+11]
+    2356: 7B 0A    DEC   [X+10]
+    2358: 52 00    MOV   A,[X+0]
+    235A: 10       PUSH  X
+    235B: 4B       SWAP  A,X
+    235C: 01 0A    ADD   A,10
+    235E: 4B       SWAP  A,X
+    235F: 9X 12    CALL  __pack
+    2361: 20       POP   X
+    2362: 52 0B    MOV   A,[X+11]
+    2364: 54 F9    MOV   [X-7],A
+    2366: 52 0C    MOV   A,[X+12]
+    2368: 54 FA    MOV   [X-6],A
+    236A: 52 0D    MOV   A,[X+13]
+    236C: 54 FB    MOV   [X-5],A
+    236E: 52 0E    MOV   A,[X+14]
+    2370: 54 FC    MOV   [X-4],A
+    2372: 38 F1    ADD   SP,241
+    2374: 80 15    JMP   0x238A
+    2376: 56 F9 7F MOV   [X-7],127
+    2379: 56 FA 80 MOV   [X-6],128
+    237C: 56 FB 00 MOV   [X-5],0
+    237F: 56 FC 00 MOV   [X-4],0
+    2382: 48 00 80 TST   [X+0],128
+    2385: A0 04    JZ    0x238A
+    2387: 2F F9 80 OR    [X-7],128
+    238A: 20       POP   X
+    238B: 7F       RET   
+*NODE:48:SW
+    238C: 10       PUSH  X
+    238D: 4F       MOV   X,SP
+    238E: 38 01    ADD   SP,1
+    2390: 52 F9    MOV   A,[X-7]
+    2392: 33 F5    XOR   A,[X-11]
+    2394: 21 80    AND   A,128
+    2396: A0 0E    JZ    0x23A5
+    2398: 48 F9 80 TST   [X-7],128
+    239B: A0 05    JZ    0x23A1
+    239D: 50 FF    MOV   A,255
+    239F: 80 47    JMP   0x23E7
+    23A1: 50 01    MOV   A,1
+    23A3: 80 43    JMP   0x23E7
+    23A5: 52 F9    MOV   A,[X-7]
+    23A7: 21 80    AND   A,128
+    23A9: 54 00    MOV   [X+0],A
+    23AB: A0 0A    JZ    0x23B6
+    23AD: 37 F9 80 XOR   [X-7],128
+    23B0: 37 F5 80 XOR   [X-11],128
+    23B3: 2F 00 01 OR    [X+0],1
+    23B6: 52 F8    MOV   A,[X-8]
+    23B8: 15 FC    SUB   [X-4],A
+    23BA: 52 F7    MOV   A,[X-9]
+    23BC: 1D FB    SBB   [X-5],A
+    23BE: 52 F6    MOV   A,[X-10]
+    23C0: 1D FA    SBB   [X-6],A
+    23C2: 52 F5    MOV   A,[X-11]
+    23C4: 1D F9    SBB   [X-7],A
+    23C6: C0 15    JC    0x23DC
+    23C8: 4B       SWAP  A,X
+    23C9: 11 08    SUB   A,8
+    23CB: 4B       SWAP  A,X
+    23CC: 9X 34    CALL  __SPFloat_is_zero
+    23CE: A0 05    JZ    0x23D4
+    23D0: 50 01    MOV   A,1
+    23D2: 80 03    JMP   0x23D6
+    23D4: 50 00    MOV   A,0
+    23D6: 4B       SWAP  A,X
+    23D7: 01 08    ADD   A,8
+    23D9: 4B       SWAP  A,X
+    23DA: 80 03    JMP   0x23DE
+    23DC: 50 FF    MOV   A,255
+    23DE: 48 00 80 TST   [X+0],128
+    23E1: A0 05    JZ    0x23E7
+    23E3: 31 FF    XOR   A,255
+    23E5: 01 01    ADD   A,1
+    23E7: 38 FF    ADD   SP,255
+    23E9: 20       POP   X
+    23EA: 7F       RET   
+*NODE:49:SW
+    23EB: 10       PUSH  X
+    23EC: 4F       MOV   X,SP
+    23ED: 4B       SWAP  A,X
+    23EE: 11 07    SUB   A,7
+    23F0: 4B       SWAP  A,X
+    23F1: 9X 5F    CALL  __tst_s32
+    23F3: A0 77    JZ    0x246B
+    23F5: 4F       MOV   X,SP
+    23F6: 52 F9    MOV   A,[X-7]
+    23F8: 08       PUSH  A
+    23F9: 66 FA    ASL   [X-6]
+    23FB: 6C F9    RLC   [X-7]
+    23FD: 52 F9    MOV   A,[X-7]
+    23FF: 11 7F    SUB   A,127
+    2401: 69 FA    ASR   [X-6]
+    2403: 2F FA 80 OR    [X-6],128
+    2406: 56 F9 00 MOV   [X-7],0
+    2409: 39 80    CMP   A,128
+    240B: D0 19    JNC   0x2425
+    240D: 39 17    CMP   A,23
+    240F: C0 20    JC    0x2430
+    2411: A0 3C    JZ    0x244E
+    2413: 39 20    CMP   A,32
+    2415: C0 2B    JC    0x2441
+    2417: 56 F9 7F MOV   [X-7],127
+    241A: 56 FA FF MOV   [X-6],255
+    241D: 56 FB FF MOV   [X-5],255
+    2420: 56 FC FF MOV   [X-4],255
+    2423: 80 2A    JMP   0x244E
+    2425: 56 FA 00 MOV   [X-6],0
+    2428: 56 FB 00 MOV   [X-5],0
+    242B: 56 FC 00 MOV   [X-4],0
+    242E: 80 1F    JMP   0x244E
+    2430: 73       CPL   A
+    2431: 74       INC   A
+    2432: 01 17    ADD   A,23
+    2434: 69 F9    ASR   [X-7]
+    2436: 6F FA    RRC   [X-6]
+    2438: 6F FB    RRC   [X-5]
+    243A: 6F FC    RRC   [X-4]
+    243C: 78       DEC   A
+    243D: BF F6    JNZ   0x2434
+    243F: 80 0E    JMP   0x244E
+    2441: 11 17    SUB   A,23
+    2443: 66 FC    ASL   [X-4]
+    2445: 6C FB    RLC   [X-5]
+    2447: 6C FA    RLC   [X-6]
+    2449: 6C F9    RLC   [X-7]
+    244B: 78       DEC   A
+    244C: BF F6    JNZ   0x2443
+    244E: 18       POP   A
+    244F: 39 80    CMP   A,128
+    2451: C0 19    JC    0x246B
+    2453: 50 00    MOV   A,0
+    2455: 13 FC    SUB   A,[X-4]
+    2457: 54 FC    MOV   [X-4],A
+    2459: 50 00    MOV   A,0
+    245B: 1B FB    SBB   A,[X-5]
+    245D: 54 FB    MOV   [X-5],A
+    245F: 50 00    MOV   A,0
+    2461: 1B FA    SBB   A,[X-6]
+    2463: 54 FA    MOV   [X-6],A
+    2465: 50 00    MOV   A,0
+    2467: 1B F9    SBB   A,[X-7]
+    2469: 54 F9    MOV   [X-7],A
+    246B: 20       POP   X
+    246C: 7F       RET   
+*NODE:50:SW
+    246D: 10       PUSH  X
+    246E: 4F       MOV   X,SP
+    246F: 4B       SWAP  A,X
+    2470: 11 07    SUB   A,7
+    2472: 4B       SWAP  A,X
+    2473: 9X DD    CALL  __tst_s32
+    2475: A0 5F    JZ    0x24D5
+    2477: 4F       MOV   X,SP
+    2478: 52 F9    MOV   A,[X-7]
+    247A: 08       PUSH  A
+    247B: 50 96    MOV   A,150
+    247D: 08       PUSH  A
+    247E: 48 00 80 TST   [X+0],128
+    2481: A0 19    JZ    0x249B
+    2483: 50 00    MOV   A,0
+    2485: 13 FC    SUB   A,[X-4]
+    2487: 54 FC    MOV   [X-4],A
+    2489: 50 00    MOV   A,0
+    248B: 1B FB    SBB   A,[X-5]
+    248D: 54 FB    MOV   [X-5],A
+    248F: 50 00    MOV   A,0
+    2491: 1B FA    SBB   A,[X-6]
+    2493: 54 FA    MOV   [X-6],A
+    2495: 50 00    MOV   A,0
+    2497: 1B F9    SBB   A,[X-7]
+    2499: 54 F9    MOV   [X-7],A
+    249B: 48 F9 FF TST   [X-7],255
+    249E: A0 1E    JZ    0x24BD
+    24A0: 80 0B    JMP   0x24AC
+    24A2: 69 F9    ASR   [X-7]
+    24A4: 6F FA    RRC   [X-6]
+    24A6: 6F FB    RRC   [X-5]
+    24A8: 6F FC    RRC   [X-4]
+    24AA: 77 01    INC   [X+1]
+    24AC: 48 F9 FF TST   [X-7],255
+    24AF: BF F2    JNZ   0x24A2
+    24B1: 80 10    JMP   0x24C2
+    24B3: 66 FC    ASL   [X-4]
+    24B5: 6C FB    RLC   [X-5]
+    24B7: 6C FA    RLC   [X-6]
+    24B9: 6C F9    RLC   [X-7]
+    24BB: 7B 01    DEC   [X+1]
+    24BD: 48 FA 80 TST   [X-6],128
+    24C0: AF F2    JZ    0x24B3
+    24C2: 18       POP   A
+    24C3: 66 FA    ASL   [X-6]
+    24C5: 54 F9    MOV   [X-7],A
+    24C7: 70 FB    AND   F,251
+    24C9: 6F F9    RRC   [X-7]
+    24CB: 6F FA    RRC   [X-6]
+    24CD: 18       POP   A
+    24CE: 39 80    CMP   A,128
+    24D0: C0 04    JC    0x24D5
+    24D2: 2F F9 80 OR    [X-7],128
+    24D5: 20       POP   X
+    24D6: 7F       RET   
+*NODE:51:SW
+    24D7: 10       PUSH  X
+    24D8: 4F       MOV   X,SP
+    24D9: 38 07    ADD   SP,7
+    24DB: 56 06 00 MOV   [X+6],0
+    24DE: 52 FA    MOV   A,[X-6]
+    24E0: 54 03    MOV   [X+3],A
+    24E2: 52 F9    MOV   A,[X-7]
+    24E4: 54 02    MOV   [X+2],A
+    24E6: 52 FA    MOV   A,[X-6]
+    24E8: 11 00    SUB   A,0
+    24EA: 52 F9    MOV   A,[X-7]
+    24EC: 31 80    XOR   A,128
+    24EE: 19 80    SBB   A,128
+    24F0: D0 29    JNC   0x251A
+    24F2: 3D F7 00 CMP   [X-9],0
+    24F5: B0 24    JNZ   0x251A
+    24F7: 3D F8 0A CMP   [X-8],10
+    24FA: B0 1F    JNZ   0x251A
+    24FC: 56 06 01 MOV   [X+6],1
+    24FF: 62 D0 00 MOV   REG[208],0
+    2502: 52 03    MOV   A,[X+3]
+    2504: 73       CPL   A
+    2505: 53 1A    MOV   [__r1],A
+    2507: 52 02    MOV   A,[X+2]
+    2509: 73       CPL   A
+    250A: 53 1B    MOV   [__r0],A
+    250C: 51 1A    MOV   A,[__r1]
+    250E: 01 01    ADD   A,1
+    2510: 54 03    MOV   [X+3],A
+    2512: 51 1B    MOV   A,[__r0]
+    2514: 09 00    ADC   A,0
+    2516: 54 02    MOV   [X+2],A
+    2518: 80 04    JMP   0x251D
+    251A: 56 06 00 MOV   [X+6],0
+    251D: 52 FC    MOV   A,[X-4]
+    251F: 54 01    MOV   [X+1],A
+    2521: 52 FB    MOV   A,[X-5]
+    2523: 54 00    MOV   [X+0],A
+    2525: 62 D0 00 MOV   REG[208],0
+    2528: 52 01    MOV   A,[X+1]
+    252A: 53 1A    MOV   [__r1],A
+    252C: 52 00    MOV   A,[X+0]
+    252E: 53 1B    MOV   [__r0],A
+    2530: 51 1A    MOV   A,[__r1]
+    2532: 01 01    ADD   A,1
+    2534: 54 01    MOV   [X+1],A
+    2536: 51 1B    MOV   A,[__r0]
+    2538: 09 00    ADC   A,0
+    253A: 54 00    MOV   [X+0],A
+    253C: 52 F7    MOV   A,[X-9]
+    253E: 08       PUSH  A
+    253F: 52 F8    MOV   A,[X-8]
+    2541: 08       PUSH  A
+    2542: 52 02    MOV   A,[X+2]
+    2544: 08       PUSH  A
+    2545: 52 03    MOV   A,[X+3]
+    2547: 08       PUSH  A
+    2548: 7C 1E 59 LCALL __divmodu_16X16_16
+    254B: 38 FE    ADD   SP,254
+    254D: 18       POP   A
+    254E: 53 18    MOV   [__r3],A
+    2550: 18       POP   A
+    2551: 53 19    MOV   [__r2],A
+    2553: 06 18 1A ADD   [__r3],26
+    2556: 0E 19 03 ADC   [__r2],3
+    2559: 51 19    MOV   A,[__r2]
+    255B: 10       PUSH  X
+    255C: 58 18    MOV   X,[__r3]
+    255E: 28       ROMX  
+    255F: 20       POP   X
+    2560: 53 19    MOV   [__r2],A
+    2562: 51 1B    MOV   A,[__r0]
+    2564: 60 D5    MOV   REG[213],A
+    2566: 51 19    MOV   A,[__r2]
+    2568: 3F 1A    MVI   [__r1],A
+    256A: 52 F7    MOV   A,[X-9]
+    256C: 08       PUSH  A
+    256D: 52 F8    MOV   A,[X-8]
+    256F: 08       PUSH  A
+    2570: 52 02    MOV   A,[X+2]
+    2572: 08       PUSH  A
+    2573: 52 03    MOV   A,[X+3]
+    2575: 08       PUSH  A
+    2576: 7C 1E 59 LCALL __divmodu_16X16_16
+    2579: 18       POP   A
+    257A: 54 03    MOV   [X+3],A
+    257C: 18       POP   A
+    257D: 54 02    MOV   [X+2],A
+    257F: 38 FE    ADD   SP,254
+    2581: 3D 02 00 CMP   [X+2],0
+    2584: BF A0    JNZ   0x2525
+    2586: 3D 03 00 CMP   [X+3],0
+    2589: BF 9B    JNZ   0x2525
+    258B: 3D 06 00 CMP   [X+6],0
+    258E: A0 20    JZ    0x25AF
+    2590: 62 D0 00 MOV   REG[208],0
+    2593: 52 01    MOV   A,[X+1]
+    2595: 53 1A    MOV   [__r1],A
+    2597: 52 00    MOV   A,[X+0]
+    2599: 53 1B    MOV   [__r0],A
+    259B: 51 1A    MOV   A,[__r1]
+    259D: 01 01    ADD   A,1
+    259F: 54 01    MOV   [X+1],A
+    25A1: 51 1B    MOV   A,[__r0]
+    25A3: 09 00    ADC   A,0
+    25A5: 54 00    MOV   [X+0],A
+    25A7: 51 1B    MOV   A,[__r0]
+    25A9: 60 D5    MOV   REG[213],A
+    25AB: 50 2D    MOV   A,45
+    25AD: 3F 1A    MVI   [__r1],A
+    25AF: 62 D0 00 MOV   REG[208],0
+    25B2: 52 01    MOV   A,[X+1]
+    25B4: 53 1A    MOV   [__r1],A
+    25B6: 52 00    MOV   A,[X+0]
+    25B8: 53 1B    MOV   [__r0],A
+    25BA: 51 1A    MOV   A,[__r1]
+    25BC: 01 FF    ADD   A,255
+    25BE: 54 01    MOV   [X+1],A
+    25C0: 51 1B    MOV   A,[__r0]
+    25C2: 09 FF    ADC   A,255
+    25C4: 54 00    MOV   [X+0],A
+    25C6: 51 1B    MOV   A,[__r0]
+    25C8: 60 D5    MOV   REG[213],A
+    25CA: 50 00    MOV   A,0
+    25CC: 3F 1A    MVI   [__r1],A
+    25CE: 52 FC    MOV   A,[X-4]
+    25D0: 54 05    MOV   [X+5],A
+    25D2: 52 FB    MOV   A,[X-5]
+    25D4: 54 04    MOV   [X+4],A
+    25D6: 80 54    JMP   0x262B
+    25D8: 62 D0 00 MOV   REG[208],0
+    25DB: 52 05    MOV   A,[X+5]
+    25DD: 53 1A    MOV   [__r1],A
+    25DF: 52 04    MOV   A,[X+4]
+    25E1: 60 D4    MOV   REG[212],A
+    25E3: 3E 1A    MVI   A,[__r1]
+    25E5: 54 06    MOV   [X+6],A
+    25E7: 52 05    MOV   A,[X+5]
+    25E9: 53 1A    MOV   [__r1],A
+    25EB: 52 04    MOV   A,[X+4]
+    25ED: 53 1B    MOV   [__r0],A
+    25EF: 51 1A    MOV   A,[__r1]
+    25F1: 01 01    ADD   A,1
+    25F3: 54 05    MOV   [X+5],A
+    25F5: 51 1B    MOV   A,[__r0]
+    25F7: 09 00    ADC   A,0
+    25F9: 54 04    MOV   [X+4],A
+    25FB: 52 01    MOV   A,[X+1]
+    25FD: 53 18    MOV   [__r3],A
+    25FF: 52 00    MOV   A,[X+0]
+    2601: 60 D4    MOV   REG[212],A
+    2603: 3E 18    MVI   A,[__r3]
+    2605: 53 19    MOV   [__r2],A
+    2607: 51 1B    MOV   A,[__r0]
+    2609: 60 D5    MOV   REG[213],A
+    260B: 51 19    MOV   A,[__r2]
+    260D: 3F 1A    MVI   [__r1],A
+    260F: 52 01    MOV   A,[X+1]
+    2611: 53 1A    MOV   [__r1],A
+    2613: 52 00    MOV   A,[X+0]
+    2615: 53 1B    MOV   [__r0],A
+    2617: 51 1A    MOV   A,[__r1]
+    2619: 01 FF    ADD   A,255
+    261B: 54 01    MOV   [X+1],A
+    261D: 51 1B    MOV   A,[__r0]
+    261F: 09 FF    ADC   A,255
+    2621: 54 00    MOV   [X+0],A
+    2623: 51 1B    MOV   A,[__r0]
+    2625: 60 D5    MOV   REG[213],A
+    2627: 52 06    MOV   A,[X+6]
+    2629: 3F 1A    MVI   [__r1],A
+    262B: 52 05    MOV   A,[X+5]
+    262D: 13 01    SUB   A,[X+1]
+    262F: 52 04    MOV   A,[X+4]
+    2631: 1B 00    SBB   A,[X+0]
+    2633: CF A4    JC    0x25D8
+    2635: 62 D0 00 MOV   REG[208],0
+    2638: 52 FC    MOV   A,[X-4]
+    263A: 53 1A    MOV   [__r1],A
+    263C: 52 FB    MOV   A,[X-5]
+    263E: 53 1B    MOV   [__r0],A
+    2640: 38 F9    ADD   SP,249
+    2642: 20       POP   X
+    2643: 7F       RET   
+*NODE:52:SW
+    2644: 10       PUSH  X
+    2645: 4F       MOV   X,SP
+    2646: 38 08    ADD   SP,8
+    2648: 50 00    MOV   A,0
+    264A: 08       PUSH  A
+    264B: 08       PUSH  A
+    264C: 08       PUSH  A
+    264D: 08       PUSH  A
+    264E: 52 F9    MOV   A,[X-7]
+    2650: 08       PUSH  A
+    2651: 52 FA    MOV   A,[X-6]
+    2653: 08       PUSH  A
+    2654: 52 FB    MOV   A,[X-5]
+    2656: 08       PUSH  A
+    2657: 52 FC    MOV   A,[X-4]
+    2659: 08       PUSH  A
+    265A: 62 D0 00 MOV   REG[208],0
+    265D: 7C 23 8C LCALL __fpcmp
+    2660: 38 F8    ADD   SP,248
+    2662: 39 00    CMP   A,0
+    2664: B0 1D    JNZ   0x2682
+    2666: 52 F8    MOV   A,[X-8]
+    2668: 53 1A    MOV   [__r1],A
+    266A: 52 F7    MOV   A,[X-9]
+    266C: 60 D5    MOV   REG[213],A
+    266E: 50 00    MOV   A,0
+    2670: 3F 1A    MVI   [__r1],A
+    2672: 3F 1A    MVI   [__r1],A
+    2674: 55 1B 00 MOV   [__r0],0
+    2677: 55 1A 00 MOV   [__r1],0
+    267A: 55 19 00 MOV   [__r2],0
+    267D: 55 18 00 MOV   [__r3],0
+    2680: 80 95    JMP   0x2716
+    2682: 52 F9    MOV   A,[X-7]
+    2684: 54 00    MOV   [X+0],A
+    2686: 52 FA    MOV   A,[X-6]
+    2688: 54 01    MOV   [X+1],A
+    268A: 52 FB    MOV   A,[X-5]
+    268C: 54 02    MOV   [X+2],A
+    268E: 52 FC    MOV   A,[X-4]
+    2690: 54 03    MOV   [X+3],A
+    2692: 66 01    ASL   [X+1]
+    2694: 6C 00    RLC   [X+0]
+    2696: 62 D0 00 MOV   REG[208],0
+    2699: 52 00    MOV   A,[X+0]
+    269B: 53 1A    MOV   [__r1],A
+    269D: 55 1B 00 MOV   [__r0],0
+    26A0: 16 1A 7E SUB   [__r1],126
+    26A3: 1E 1B 00 SBB   [__r0],0
+    26A6: 52 F8    MOV   A,[X-8]
+    26A8: 53 18    MOV   [__r3],A
+    26AA: 52 F7    MOV   A,[X-9]
+    26AC: 60 D5    MOV   REG[213],A
+    26AE: 51 1B    MOV   A,[__r0]
+    26B0: 3F 18    MVI   [__r3],A
+    26B2: 51 1A    MOV   A,[__r1]
+    26B4: 3F 18    MVI   [__r3],A
+    26B6: 56 00 7E MOV   [X+0],126
+    26B9: 70 FB    AND   F,251
+    26BB: 6F 00    RRC   [X+0]
+    26BD: 6F 01    RRC   [X+1]
+    26BF: 50 00    MOV   A,0
+    26C1: 08       PUSH  A
+    26C2: 08       PUSH  A
+    26C3: 08       PUSH  A
+    26C4: 08       PUSH  A
+    26C5: 52 F9    MOV   A,[X-7]
+    26C7: 08       PUSH  A
+    26C8: 52 FA    MOV   A,[X-6]
+    26CA: 08       PUSH  A
+    26CB: 52 FB    MOV   A,[X-5]
+    26CD: 08       PUSH  A
+    26CE: 52 FC    MOV   A,[X-4]
+    26D0: 08       PUSH  A
+    26D1: 7C 23 8C LCALL __fpcmp
+    26D4: 38 F8    ADD   SP,248
+    26D6: 39 00    CMP   A,0
+    26D8: A0 1A    JZ    0x26F3
+    26DA: 39 01    CMP   A,1
+    26DC: A0 16    JZ    0x26F3
+    26DE: 52 00    MOV   A,[X+0]
+    26E0: 54 04    MOV   [X+4],A
+    26E2: 52 01    MOV   A,[X+1]
+    26E4: 54 05    MOV   [X+5],A
+    26E6: 52 02    MOV   A,[X+2]
+    26E8: 54 06    MOV   [X+6],A
+    26EA: 52 03    MOV   A,[X+3]
+    26EC: 54 07    MOV   [X+7],A
+    26EE: 37 04 80 XOR   [X+4],128
+    26F1: 80 11    JMP   0x2703
+    26F3: 52 00    MOV   A,[X+0]
+    26F5: 54 04    MOV   [X+4],A
+    26F7: 52 01    MOV   A,[X+1]
+    26F9: 54 05    MOV   [X+5],A
+    26FB: 52 02    MOV   A,[X+2]
+    26FD: 54 06    MOV   [X+6],A
+    26FF: 52 03    MOV   A,[X+3]
+    2701: 54 07    MOV   [X+7],A
+    2703: 62 D0 00 MOV   REG[208],0
+    2706: 52 04    MOV   A,[X+4]
+    2708: 53 1B    MOV   [__r0],A
+    270A: 52 05    MOV   A,[X+5]
+    270C: 53 1A    MOV   [__r1],A
+    270E: 52 06    MOV   A,[X+6]
+    2710: 53 19    MOV   [__r2],A
+    2712: 52 07    MOV   A,[X+7]
+    2714: 53 18    MOV   [__r3],A
+    2716: 38 F8    ADD   SP,248
+    2718: 20       POP   X
+    2719: 7F       RET   
+*NODE:53:SW
+    271A: 10       PUSH  X
+    271B: 4F       MOV   X,SP
+    271C: 38 06    ADD   SP,6
+    271E: 50 00    MOV   A,0
+    2720: 08       PUSH  A
+    2721: 08       PUSH  A
+    2722: 08       PUSH  A
+    2723: 08       PUSH  A
+    2724: 52 F9    MOV   A,[X-7]
+    2726: 08       PUSH  A
+    2727: 52 FA    MOV   A,[X-6]
+    2729: 08       PUSH  A
+    272A: 52 FB    MOV   A,[X-5]
+    272C: 08       PUSH  A
+    272D: 52 FC    MOV   A,[X-4]
+    272F: 08       PUSH  A
+    2730: 62 D0 00 MOV   REG[208],0
+    2733: 7C 23 8C LCALL __fpcmp
+    2736: 38 F8    ADD   SP,248
+    2738: 39 01    CMP   A,1
+    273A: A0 1B    JZ    0x2756
+    273C: 62 D0 00 MOV   REG[208],0
+    273F: 55 3B 01 MOV   [errno+1],1
+    2742: 55 3A 00 MOV   [errno],0
+    2745: 62 D0 00 MOV   REG[208],0
+    2748: 55 1B FF MOV   [__r0],255
+    274B: 55 1A 7F MOV   [__r1],127
+    274E: 55 19 FF MOV   [__r2],255
+    2751: 55 18 FF MOV   [__r3],255
+    2754: 82 70    JMP   0x29C5
+    2756: 62 D0 00 MOV   REG[208],0
+    2759: 5A 1A    MOV   [__r1],X
+    275B: 06 1A 04 ADD   [__r1],4
+    275E: 50 07    MOV   A,7
+    2760: 08       PUSH  A
+    2761: 51 1A    MOV   A,[__r1]
+    2763: 08       PUSH  A
+    2764: 52 F9    MOV   A,[X-7]
+    2766: 08       PUSH  A
+    2767: 52 FA    MOV   A,[X-6]
+    2769: 08       PUSH  A
+    276A: 52 FB    MOV   A,[X-5]
+    276C: 08       PUSH  A
+    276D: 52 FC    MOV   A,[X-4]
+    276F: 08       PUSH  A
+    2770: 7C 26 44 LCALL _frexp
+    2773: 38 FA    ADD   SP,250
+    2775: 62 D0 00 MOV   REG[208],0
+    2778: 51 1B    MOV   A,[__r0]
+    277A: 54 F9    MOV   [X-7],A
+    277C: 51 1A    MOV   A,[__r1]
+    277E: 54 FA    MOV   [X-6],A
+    2780: 51 19    MOV   A,[__r2]
+    2782: 54 FB    MOV   [X-5],A
+    2784: 51 18    MOV   A,[__r3]
+    2786: 54 FC    MOV   [X-4],A
+    2788: 50 3F    MOV   A,63
+    278A: 08       PUSH  A
+    278B: 50 35    MOV   A,53
+    278D: 08       PUSH  A
+    278E: 50 04    MOV   A,4
+    2790: 08       PUSH  A
+    2791: 50 F3    MOV   A,243
+    2793: 08       PUSH  A
+    2794: 52 F9    MOV   A,[X-7]
+    2796: 08       PUSH  A
+    2797: 52 FA    MOV   A,[X-6]
+    2799: 08       PUSH  A
+    279A: 52 FB    MOV   A,[X-5]
+    279C: 08       PUSH  A
+    279D: 52 FC    MOV   A,[X-4]
+    279F: 08       PUSH  A
+    27A0: 7C 23 8C LCALL __fpcmp
+    27A3: 38 F8    ADD   SP,248
+    27A5: 39 00    CMP   A,0
+    27A7: A0 33    JZ    0x27DB
+    27A9: 39 01    CMP   A,1
+    27AB: A0 2F    JZ    0x27DB
+    27AD: 52 F9    MOV   A,[X-7]
+    27AF: 08       PUSH  A
+    27B0: 52 FA    MOV   A,[X-6]
+    27B2: 08       PUSH  A
+    27B3: 52 FB    MOV   A,[X-5]
+    27B5: 08       PUSH  A
+    27B6: 52 FC    MOV   A,[X-4]
+    27B8: 08       PUSH  A
+    27B9: 52 F9    MOV   A,[X-7]
+    27BB: 08       PUSH  A
+    27BC: 52 FA    MOV   A,[X-6]
+    27BE: 08       PUSH  A
+    27BF: 52 FB    MOV   A,[X-5]
+    27C1: 08       PUSH  A
+    27C2: 52 FC    MOV   A,[X-4]
+    27C4: 08       PUSH  A
+    27C5: 7C 20 B6 LCALL __fpadd
+    27C8: 18       POP   A
+    27C9: 54 FC    MOV   [X-4],A
+    27CB: 18       POP   A
+    27CC: 54 FB    MOV   [X-5],A
+    27CE: 18       POP   A
+    27CF: 54 FA    MOV   [X-6],A
+    27D1: 18       POP   A
+    27D2: 54 F9    MOV   [X-7],A
+    27D4: 38 FC    ADD   SP,252
+    27D6: 7B 05    DEC   [X+5]
+    27D8: 1F 04 00 SBB   [X+4],0
+    27DB: 62 D0 00 MOV   REG[208],0
+    27DE: 50 3F    MOV   A,63
+    27E0: 08       PUSH  A
+    27E1: 50 80    MOV   A,128
+    27E3: 08       PUSH  A
+    27E4: 50 00    MOV   A,0
+    27E6: 08       PUSH  A
+    27E7: 08       PUSH  A
+    27E8: 52 F9    MOV   A,[X-7]
+    27EA: 08       PUSH  A
+    27EB: 52 FA    MOV   A,[X-6]
+    27ED: 08       PUSH  A
+    27EE: 52 FB    MOV   A,[X-5]
+    27F0: 08       PUSH  A
+    27F1: 52 FC    MOV   A,[X-4]
+    27F3: 08       PUSH  A
+    27F4: 7C 20 A8 LCALL __fpsub
+    27F7: 18       POP   A
+    27F8: 53 18    MOV   [__r3],A
+    27FA: 18       POP   A
+    27FB: 53 19    MOV   [__r2],A
+    27FD: 18       POP   A
+    27FE: 53 1A    MOV   [__r1],A
+    2800: 18       POP   A
+    2801: 53 1B    MOV   [__r0],A
+    2803: 38 FC    ADD   SP,252
+    2805: 50 3F    MOV   A,63
+    2807: 08       PUSH  A
+    2808: 50 80    MOV   A,128
+    280A: 08       PUSH  A
+    280B: 50 00    MOV   A,0
+    280D: 08       PUSH  A
+    280E: 08       PUSH  A
+    280F: 52 F9    MOV   A,[X-7]
+    2811: 08       PUSH  A
+    2812: 52 FA    MOV   A,[X-6]
+    2814: 08       PUSH  A
+    2815: 52 FB    MOV   A,[X-5]
+    2817: 08       PUSH  A
+    2818: 52 FC    MOV   A,[X-4]
+    281A: 08       PUSH  A
+    281B: 7C 20 B6 LCALL __fpadd
+    281E: 18       POP   A
+    281F: 53 14    MOV   [__r7],A
+    2821: 18       POP   A
+    2822: 53 15    MOV   [__r6],A
+    2824: 18       POP   A
+    2825: 53 16    MOV   [__r5],A
+    2827: 18       POP   A
+    2828: 38 FC    ADD   SP,252
+    282A: 08       PUSH  A
+    282B: 51 16    MOV   A,[__r5]
+    282D: 08       PUSH  A
+    282E: 51 15    MOV   A,[__r6]
+    2830: 08       PUSH  A
+    2831: 51 14    MOV   A,[__r7]
+    2833: 08       PUSH  A
+    2834: 51 1B    MOV   A,[__r0]
+    2836: 08       PUSH  A
+    2837: 51 1A    MOV   A,[__r1]
+    2839: 08       PUSH  A
+    283A: 51 19    MOV   A,[__r2]
+    283C: 08       PUSH  A
+    283D: 51 18    MOV   A,[__r3]
+    283F: 08       PUSH  A
+    2840: 7C 22 83 LCALL __fpdiv
+    2843: 18       POP   A
+    2844: 54 FC    MOV   [X-4],A
+    2846: 18       POP   A
+    2847: 54 FB    MOV   [X-5],A
+    2849: 18       POP   A
+    284A: 54 FA    MOV   [X-6],A
+    284C: 18       POP   A
+    284D: 54 F9    MOV   [X-7],A
+    284F: 38 FC    ADD   SP,252
+    2851: 52 F9    MOV   A,[X-7]
+    2853: 08       PUSH  A
+    2854: 52 FA    MOV   A,[X-6]
+    2856: 08       PUSH  A
+    2857: 52 FB    MOV   A,[X-5]
+    2859: 08       PUSH  A
+    285A: 52 FC    MOV   A,[X-4]
+    285C: 08       PUSH  A
+    285D: 52 F9    MOV   A,[X-7]
+    285F: 08       PUSH  A
+    2860: 52 FA    MOV   A,[X-6]
+    2862: 08       PUSH  A
+    2863: 52 FB    MOV   A,[X-5]
+    2865: 08       PUSH  A
+    2866: 52 FC    MOV   A,[X-4]
+    2868: 08       PUSH  A
+    2869: 7C 21 9A LCALL __fpmul
+    286C: 18       POP   A
+    286D: 54 03    MOV   [X+3],A
+    286F: 18       POP   A
+    2870: 54 02    MOV   [X+2],A
+    2872: 18       POP   A
+    2873: 54 01    MOV   [X+1],A
+    2875: 18       POP   A
+    2876: 54 00    MOV   [X+0],A
+    2878: 38 FC    ADD   SP,252
+    287A: 52 00    MOV   A,[X+0]
+    287C: 08       PUSH  A
+    287D: 52 01    MOV   A,[X+1]
+    287F: 08       PUSH  A
+    2880: 52 02    MOV   A,[X+2]
+    2882: 08       PUSH  A
+    2883: 52 03    MOV   A,[X+3]
+    2885: 08       PUSH  A
+    2886: 50 3F    MOV   A,63
+    2888: 08       PUSH  A
+    2889: 50 65    MOV   A,101
+    288B: 08       PUSH  A
+    288C: 50 42    MOV   A,66
+    288E: 08       PUSH  A
+    288F: 50 26    MOV   A,38
+    2891: 08       PUSH  A
+    2892: 7C 21 9A LCALL __fpmul
+    2895: 18       POP   A
+    2896: 53 18    MOV   [__r3],A
+    2898: 18       POP   A
+    2899: 53 19    MOV   [__r2],A
+    289B: 18       POP   A
+    289C: 53 1A    MOV   [__r1],A
+    289E: 18       POP   A
+    289F: 53 1B    MOV   [__r0],A
+    28A1: 38 FC    ADD   SP,252
+    28A3: 50 40    MOV   A,64
+    28A5: 08       PUSH  A
+    28A6: 50 54    MOV   A,84
+    28A8: 08       PUSH  A
+    28A9: 50 11    MOV   A,17
+    28AB: 08       PUSH  A
+    28AC: 50 4E    MOV   A,78
+    28AE: 08       PUSH  A
+    28AF: 51 1B    MOV   A,[__r0]
+    28B1: 08       PUSH  A
+    28B2: 51 1A    MOV   A,[__r1]
+    28B4: 08       PUSH  A
+    28B5: 51 19    MOV   A,[__r2]
+    28B7: 08       PUSH  A
+    28B8: 51 18    MOV   A,[__r3]
+    28BA: 08       PUSH  A
+    28BB: 7C 20 A8 LCALL __fpsub
+    28BE: 18       POP   A
+    28BF: 53 18    MOV   [__r3],A
+    28C1: 18       POP   A
+    28C2: 53 19    MOV   [__r2],A
+    28C4: 18       POP   A
+    28C5: 53 1A    MOV   [__r1],A
+    28C7: 18       POP   A
+    28C8: 38 FC    ADD   SP,252
+    28CA: 08       PUSH  A
+    28CB: 51 1A    MOV   A,[__r1]
+    28CD: 08       PUSH  A
+    28CE: 51 19    MOV   A,[__r2]
+    28D0: 08       PUSH  A
+    28D1: 51 18    MOV   A,[__r3]
+    28D3: 08       PUSH  A
+    28D4: 52 F9    MOV   A,[X-7]
+    28D6: 08       PUSH  A
+    28D7: 52 FA    MOV   A,[X-6]
+    28D9: 08       PUSH  A
+    28DA: 52 FB    MOV   A,[X-5]
+    28DC: 08       PUSH  A
+    28DD: 52 FC    MOV   A,[X-4]
+    28DF: 08       PUSH  A
+    28E0: 7C 21 9A LCALL __fpmul
+    28E3: 18       POP   A
+    28E4: 53 18    MOV   [__r3],A
+    28E6: 18       POP   A
+    28E7: 53 19    MOV   [__r2],A
+    28E9: 18       POP   A
+    28EA: 53 1A    MOV   [__r1],A
+    28EC: 18       POP   A
+    28ED: 53 1B    MOV   [__r0],A
+    28EF: 38 FC    ADD   SP,252
+    28F1: 50 3F    MOV   A,63
+    28F3: 08       PUSH  A
+    28F4: 50 D4    MOV   A,212
+    28F6: 08       PUSH  A
+    28F7: 50 11    MOV   A,17
+    28F9: 08       PUSH  A
+    28FA: 50 4D    MOV   A,77
+    28FC: 08       PUSH  A
+    28FD: 52 00    MOV   A,[X+0]
+    28FF: 08       PUSH  A
+    2900: 52 01    MOV   A,[X+1]
+    2902: 08       PUSH  A
+    2903: 52 02    MOV   A,[X+2]
+    2905: 08       PUSH  A
+    2906: 52 03    MOV   A,[X+3]
+    2908: 08       PUSH  A
+    2909: 7C 20 A8 LCALL __fpsub
+    290C: 18       POP   A
+    290D: 53 14    MOV   [__r7],A
+    290F: 18       POP   A
+    2910: 53 15    MOV   [__r6],A
+    2912: 18       POP   A
+    2913: 53 16    MOV   [__r5],A
+    2915: 18       POP   A
+    2916: 38 FC    ADD   SP,252
+    2918: 08       PUSH  A
+    2919: 51 16    MOV   A,[__r5]
+    291B: 08       PUSH  A
+    291C: 51 15    MOV   A,[__r6]
+    291E: 08       PUSH  A
+    291F: 51 14    MOV   A,[__r7]
+    2921: 08       PUSH  A
+    2922: 51 1B    MOV   A,[__r0]
+    2924: 08       PUSH  A
+    2925: 51 1A    MOV   A,[__r1]
+    2927: 08       PUSH  A
+    2928: 51 19    MOV   A,[__r2]
+    292A: 08       PUSH  A
+    292B: 51 18    MOV   A,[__r3]
+    292D: 08       PUSH  A
+    292E: 7C 22 83 LCALL __fpdiv
+    2931: 18       POP   A
+    2932: 53 18    MOV   [__r3],A
+    2934: 18       POP   A
+    2935: 53 19    MOV   [__r2],A
+    2937: 18       POP   A
+    2938: 53 1A    MOV   [__r1],A
+    293A: 18       POP   A
+    293B: 53 1B    MOV   [__r0],A
+    293D: 38 FC    ADD   SP,252
+    293F: 52 05    MOV   A,[X+5]
+    2941: 53 14    MOV   [__r7],A
+    2943: 52 04    MOV   A,[X+4]
+    2945: 53 15    MOV   [__r6],A
+    2947: 47 15 80 TST   [__r6],128
+    294A: A0 09    JZ    0x2954
+    294C: 55 16 FF MOV   [__r5],255
+    294F: 55 17 FF MOV   [__r4],255
+    2952: 80 0A    JMP   0x295D
+    2954: 62 D0 00 MOV   REG[208],0
+    2957: 55 16 00 MOV   [__r5],0
+    295A: 55 17 00 MOV   [__r4],0
+    295D: 62 D0 00 MOV   REG[208],0
+    2960: 51 17    MOV   A,[__r4]
+    2962: 08       PUSH  A
+    2963: 51 16    MOV   A,[__r5]
+    2965: 08       PUSH  A
+    2966: 51 15    MOV   A,[__r6]
+    2968: 08       PUSH  A
+    2969: 51 14    MOV   A,[__r7]
+    296B: 08       PUSH  A
+    296C: 7C 24 6D LCALL __long2fp
+    296F: 18       POP   A
+    2970: 53 14    MOV   [__r7],A
+    2972: 18       POP   A
+    2973: 53 15    MOV   [__r6],A
+    2975: 18       POP   A
+    2976: 53 16    MOV   [__r5],A
+    2978: 18       POP   A
+    2979: 08       PUSH  A
+    297A: 51 16    MOV   A,[__r5]
+    297C: 08       PUSH  A
+    297D: 51 15    MOV   A,[__r6]
+    297F: 08       PUSH  A
+    2980: 51 14    MOV   A,[__r7]
+    2982: 08       PUSH  A
+    2983: 50 3F    MOV   A,63
+    2985: 08       PUSH  A
+    2986: 50 31    MOV   A,49
+    2988: 08       PUSH  A
+    2989: 50 72    MOV   A,114
+    298B: 08       PUSH  A
+    298C: 50 18    MOV   A,24
+    298E: 08       PUSH  A
+    298F: 7C 21 9A LCALL __fpmul
+    2992: 18       POP   A
+    2993: 53 14    MOV   [__r7],A
+    2995: 18       POP   A
+    2996: 53 15    MOV   [__r6],A
+    2998: 18       POP   A
+    2999: 53 16    MOV   [__r5],A
+    299B: 18       POP   A
+    299C: 38 FC    ADD   SP,252
+    299E: 08       PUSH  A
+    299F: 51 16    MOV   A,[__r5]
+    29A1: 08       PUSH  A
+    29A2: 51 15    MOV   A,[__r6]
+    29A4: 08       PUSH  A
+    29A5: 51 14    MOV   A,[__r7]
+    29A7: 08       PUSH  A
+    29A8: 51 1B    MOV   A,[__r0]
+    29AA: 08       PUSH  A
+    29AB: 51 1A    MOV   A,[__r1]
+    29AD: 08       PUSH  A
+    29AE: 51 19    MOV   A,[__r2]
+    29B0: 08       PUSH  A
+    29B1: 51 18    MOV   A,[__r3]
+    29B3: 08       PUSH  A
+    29B4: 7C 20 B6 LCALL __fpadd
+    29B7: 18       POP   A
+    29B8: 53 18    MOV   [__r3],A
+    29BA: 18       POP   A
+    29BB: 53 19    MOV   [__r2],A
+    29BD: 18       POP   A
+    29BE: 53 1A    MOV   [__r1],A
+    29C0: 18       POP   A
+    29C1: 53 1B    MOV   [__r0],A
+    29C3: 38 FC    ADD   SP,252
+    29C5: 38 FA    ADD   SP,250
+    29C7: 20       POP   X
+    29C8: 7F       RET   
+*NODE:54:SW
+    29C9: 10       PUSH  X
+    29CA: 4F       MOV   X,SP
+    29CB: 38 0A    ADD   SP,10
+    29CD: 50 00    MOV   A,0
+    29CF: 08       PUSH  A
+    29D0: 08       PUSH  A
+    29D1: 08       PUSH  A
+    29D2: 08       PUSH  A
+    29D3: 52 F9    MOV   A,[X-7]
+    29D5: 08       PUSH  A
+    29D6: 52 FA    MOV   A,[X-6]
+    29D8: 08       PUSH  A
+    29D9: 52 FB    MOV   A,[X-5]
+    29DB: 08       PUSH  A
+    29DC: 52 FC    MOV   A,[X-4]
+    29DE: 08       PUSH  A
+    29DF: 62 D0 00 MOV   REG[208],0
+    29E2: 7C 23 8C LCALL __fpcmp
+    29E5: 38 F8    ADD   SP,248
+    29E7: 39 00    CMP   A,0
+    29E9: A0 1F    JZ    0x2A09
+    29EB: 39 01    CMP   A,1
+    29ED: A0 1B    JZ    0x2A09
+    29EF: 62 D0 00 MOV   REG[208],0
+    29F2: 55 3B 01 MOV   [errno+1],1
+    29F5: 55 3A 00 MOV   [errno],0
+    29F8: 62 D0 00 MOV   REG[208],0
+    29FB: 55 1B 00 MOV   [__r0],0
+    29FE: 55 1A 00 MOV   [__r1],0
+    2A01: 55 19 00 MOV   [__r2],0
+    2A04: 55 18 00 MOV   [__r3],0
+    2A07: 83 36    JMP   0x2D3E
+    2A09: 50 00    MOV   A,0
+    2A0B: 08       PUSH  A
+    2A0C: 08       PUSH  A
+    2A0D: 08       PUSH  A
+    2A0E: 08       PUSH  A
+    2A0F: 52 F9    MOV   A,[X-7]
+    2A11: 08       PUSH  A
+    2A12: 52 FA    MOV   A,[X-6]
+    2A14: 08       PUSH  A
+    2A15: 52 FB    MOV   A,[X-5]
+    2A17: 08       PUSH  A
+    2A18: 52 FC    MOV   A,[X-4]
+    2A1A: 08       PUSH  A
+    2A1B: 62 D0 00 MOV   REG[208],0
+    2A1E: 7C 23 8C LCALL __fpcmp
+    2A21: 38 F8    ADD   SP,248
+    2A23: 39 00    CMP   A,0
+    2A25: B0 0F    JNZ   0x2A35
+    2A27: 55 1B 00 MOV   [__r0],0
+    2A2A: 55 1A 00 MOV   [__r1],0
+    2A2D: 55 19 00 MOV   [__r2],0
+    2A30: 55 18 00 MOV   [__r3],0
+    2A33: 83 0A    JMP   0x2D3E
+    2A35: 62 D0 00 MOV   REG[208],0
+    2A38: 50 07    MOV   A,7
+    2A3A: 08       PUSH  A
+    2A3B: 10       PUSH  X
+    2A3C: 52 F9    MOV   A,[X-7]
+    2A3E: 08       PUSH  A
+    2A3F: 52 FA    MOV   A,[X-6]
+    2A41: 08       PUSH  A
+    2A42: 52 FB    MOV   A,[X-5]
+    2A44: 08       PUSH  A
+    2A45: 52 FC    MOV   A,[X-4]
+    2A47: 08       PUSH  A
+    2A48: 7C 26 44 LCALL _frexp
+    2A4B: 38 FA    ADD   SP,250
+    2A4D: 62 D0 00 MOV   REG[208],0
+    2A50: 51 1B    MOV   A,[__r0]
+    2A52: 54 02    MOV   [X+2],A
+    2A54: 51 1A    MOV   A,[__r1]
+    2A56: 54 03    MOV   [X+3],A
+    2A58: 51 19    MOV   A,[__r2]
+    2A5A: 54 04    MOV   [X+4],A
+    2A5C: 51 18    MOV   A,[__r3]
+    2A5E: 54 05    MOV   [X+5],A
+    2A60: 52 01    MOV   A,[X+1]
+    2A62: 21 01    AND   A,1
+    2A64: 53 1A    MOV   [__r1],A
+    2A66: 52 00    MOV   A,[X+0]
+    2A68: 21 00    AND   A,0
+    2A6A: 39 00    CMP   A,0
+    2A6C: B0 06    JNZ   0x2A73
+    2A6E: 3C 1A 00 CMP   [__r1],0
+    2A71: A0 32    JZ    0x2AA4
+    2A73: 52 02    MOV   A,[X+2]
+    2A75: 08       PUSH  A
+    2A76: 52 03    MOV   A,[X+3]
+    2A78: 08       PUSH  A
+    2A79: 52 04    MOV   A,[X+4]
+    2A7B: 08       PUSH  A
+    2A7C: 52 05    MOV   A,[X+5]
+    2A7E: 08       PUSH  A
+    2A7F: 52 02    MOV   A,[X+2]
+    2A81: 08       PUSH  A
+    2A82: 52 03    MOV   A,[X+3]
+    2A84: 08       PUSH  A
+    2A85: 52 04    MOV   A,[X+4]
+    2A87: 08       PUSH  A
+    2A88: 52 05    MOV   A,[X+5]
+    2A8A: 08       PUSH  A
+    2A8B: 62 D0 00 MOV   REG[208],0
+    2A8E: 7C 20 B6 LCALL __fpadd
+    2A91: 18       POP   A
+    2A92: 54 05    MOV   [X+5],A
+    2A94: 18       POP   A
+    2A95: 54 04    MOV   [X+4],A
+    2A97: 18       POP   A
+    2A98: 54 03    MOV   [X+3],A
+    2A9A: 18       POP   A
+    2A9B: 54 02    MOV   [X+2],A
+    2A9D: 38 FC    ADD   SP,252
+    2A9F: 7B 01    DEC   [X+1]
+    2AA1: 1F 00 00 SBB   [X+0],0
+    2AA4: 62 D0 00 MOV   REG[208],0
+    2AA7: 50 3F    MOV   A,63
+    2AA9: 08       PUSH  A
+    2AAA: 50 80    MOV   A,128
+    2AAC: 08       PUSH  A
+    2AAD: 50 00    MOV   A,0
+    2AAF: 08       PUSH  A
+    2AB0: 08       PUSH  A
+    2AB1: 52 02    MOV   A,[X+2]
+    2AB3: 08       PUSH  A
+    2AB4: 52 03    MOV   A,[X+3]
+    2AB6: 08       PUSH  A
+    2AB7: 52 04    MOV   A,[X+4]
+    2AB9: 08       PUSH  A
+    2ABA: 52 05    MOV   A,[X+5]
+    2ABC: 08       PUSH  A
+    2ABD: 7C 20 B6 LCALL __fpadd
+    2AC0: 18       POP   A
+    2AC1: 53 18    MOV   [__r3],A
+    2AC3: 18       POP   A
+    2AC4: 53 19    MOV   [__r2],A
+    2AC6: 18       POP   A
+    2AC7: 53 1A    MOV   [__r1],A
+    2AC9: 18       POP   A
+    2ACA: 38 FC    ADD   SP,252
+    2ACC: 08       PUSH  A
+    2ACD: 51 1A    MOV   A,[__r1]
+    2ACF: 08       PUSH  A
+    2AD0: 51 19    MOV   A,[__r2]
+    2AD2: 08       PUSH  A
+    2AD3: 51 18    MOV   A,[__r3]
+    2AD5: 08       PUSH  A
+    2AD6: 50 3F    MOV   A,63
+    2AD8: 08       PUSH  A
+    2AD9: 50 00    MOV   A,0
+    2ADB: 08       PUSH  A
+    2ADC: 08       PUSH  A
+    2ADD: 08       PUSH  A
+    2ADE: 7C 21 9A LCALL __fpmul
+    2AE1: 18       POP   A
+    2AE2: 54 05    MOV   [X+5],A
+    2AE4: 18       POP   A
+    2AE5: 54 04    MOV   [X+4],A
+    2AE7: 18       POP   A
+    2AE8: 54 03    MOV   [X+3],A
+    2AEA: 18       POP   A
+    2AEB: 54 02    MOV   [X+2],A
+    2AED: 38 FC    ADD   SP,252
+    2AEF: 80 31    JMP   0x2B21
+    2AF1: 52 02    MOV   A,[X+2]
+    2AF3: 08       PUSH  A
+    2AF4: 52 03    MOV   A,[X+3]
+    2AF6: 08       PUSH  A
+    2AF7: 52 04    MOV   A,[X+4]
+    2AF9: 08       PUSH  A
+    2AFA: 52 05    MOV   A,[X+5]
+    2AFC: 08       PUSH  A
+    2AFD: 50 4E    MOV   A,78
+    2AFF: 08       PUSH  A
+    2B00: 50 80    MOV   A,128
+    2B02: 08       PUSH  A
+    2B03: 50 00    MOV   A,0
+    2B05: 08       PUSH  A
+    2B06: 08       PUSH  A
+    2B07: 62 D0 00 MOV   REG[208],0
+    2B0A: 7C 21 9A LCALL __fpmul
+    2B0D: 18       POP   A
+    2B0E: 54 05    MOV   [X+5],A
+    2B10: 18       POP   A
+    2B11: 54 04    MOV   [X+4],A
+    2B13: 18       POP   A
+    2B14: 54 03    MOV   [X+3],A
+    2B16: 18       POP   A
+    2B17: 54 02    MOV   [X+2],A
+    2B19: 38 FC    ADD   SP,252
+    2B1B: 17 01 3C SUB   [X+1],60
+    2B1E: 1F 00 00 SBB   [X+0],0
+    2B21: 50 3C    MOV   A,60
+    2B23: 13 01    SUB   A,[X+1]
+    2B25: 52 00    MOV   A,[X+0]
+    2B27: 31 80    XOR   A,128
+    2B29: 62 D0 00 MOV   REG[208],0
+    2B2C: 53 0F    MOV   [__rX],A
+    2B2E: 50 80    MOV   A,128
+    2B30: 1A 0F    SBB   A,[__rX]
+    2B32: CF BE    JC    0x2AF1
+    2B34: 80 31    JMP   0x2B66
+    2B36: 50 4E    MOV   A,78
+    2B38: 08       PUSH  A
+    2B39: 50 80    MOV   A,128
+    2B3B: 08       PUSH  A
+    2B3C: 50 00    MOV   A,0
+    2B3E: 08       PUSH  A
+    2B3F: 08       PUSH  A
+    2B40: 52 02    MOV   A,[X+2]
+    2B42: 08       PUSH  A
+    2B43: 52 03    MOV   A,[X+3]
+    2B45: 08       PUSH  A
+    2B46: 52 04    MOV   A,[X+4]
+    2B48: 08       PUSH  A
+    2B49: 52 05    MOV   A,[X+5]
+    2B4B: 08       PUSH  A
+    2B4C: 62 D0 00 MOV   REG[208],0
+    2B4F: 7C 22 83 LCALL __fpdiv
+    2B52: 18       POP   A
+    2B53: 54 05    MOV   [X+5],A
+    2B55: 18       POP   A
+    2B56: 54 04    MOV   [X+4],A
+    2B58: 18       POP   A
+    2B59: 54 03    MOV   [X+3],A
+    2B5B: 18       POP   A
+    2B5C: 54 02    MOV   [X+2],A
+    2B5E: 38 FC    ADD   SP,252
+    2B60: 07 01 3C ADD   [X+1],60
+    2B63: 0F 00 00 ADC   [X+0],0
+    2B66: 52 01    MOV   A,[X+1]
+    2B68: 11 C4    SUB   A,196
+    2B6A: 52 00    MOV   A,[X+0]
+    2B6C: 31 80    XOR   A,128
+    2B6E: 19 7F    SBB   A,127
+    2B70: CF C5    JC    0x2B36
+    2B72: 56 06 00 MOV   [X+6],0
+    2B75: 56 07 00 MOV   [X+7],0
+    2B78: 56 08 00 MOV   [X+8],0
+    2B7B: 56 09 01 MOV   [X+9],1
+    2B7E: 52 01    MOV   A,[X+1]
+    2B80: 11 00    SUB   A,0
+    2B82: 52 00    MOV   A,[X+0]
+    2B84: 31 80    XOR   A,128
+    2B86: 19 80    SBB   A,128
+    2B88: C0 89    JC    0x2C12
+    2B8A: 62 D0 00 MOV   REG[208],0
+    2B8D: 52 01    MOV   A,[X+1]
+    2B8F: 53 1A    MOV   [__r1],A
+    2B91: 52 00    MOV   A,[X+0]
+    2B93: 53 1B    MOV   [__r0],A
+    2B95: 68 1B    ASR   [__r0]
+    2B97: 6E 1A    RRC   [__r1]
+    2B99: 52 06    MOV   A,[X+6]
+    2B9B: 53 17    MOV   [__r4],A
+    2B9D: 52 07    MOV   A,[X+7]
+    2B9F: 53 16    MOV   [__r5],A
+    2BA1: 52 08    MOV   A,[X+8]
+    2BA3: 53 15    MOV   [__r6],A
+    2BA5: 52 09    MOV   A,[X+9]
+    2BA7: 53 14    MOV   [__r7],A
+    2BA9: 51 1A    MOV   A,[__r1]
+    2BAB: 21 1F    AND   A,31
+    2BAD: A0 0F    JZ    0x2BBD
+    2BAF: 62 D0 00 MOV   REG[208],0
+    2BB2: 65 14    ASL   [__r7]
+    2BB4: 6B 15    RLC   [__r6]
+    2BB6: 6B 16    RLC   [__r5]
+    2BB8: 6B 17    RLC   [__r4]
+    2BBA: 78       DEC   A
+    2BBB: BF F3    JNZ   0x2BAF
+    2BBD: 62 D0 00 MOV   REG[208],0
+    2BC0: 51 17    MOV   A,[__r4]
+    2BC2: 54 06    MOV   [X+6],A
+    2BC4: 51 16    MOV   A,[__r5]
+    2BC6: 54 07    MOV   [X+7],A
+    2BC8: 51 15    MOV   A,[__r6]
+    2BCA: 54 08    MOV   [X+8],A
+    2BCC: 51 14    MOV   A,[__r7]
+    2BCE: 54 09    MOV   [X+9],A
+    2BD0: 52 06    MOV   A,[X+6]
+    2BD2: 08       PUSH  A
+    2BD3: 52 07    MOV   A,[X+7]
+    2BD5: 08       PUSH  A
+    2BD6: 52 08    MOV   A,[X+8]
+    2BD8: 08       PUSH  A
+    2BD9: 52 09    MOV   A,[X+9]
+    2BDB: 08       PUSH  A
+    2BDC: 7C 24 6D LCALL __long2fp
+    2BDF: 18       POP   A
+    2BE0: 53 18    MOV   [__r3],A
+    2BE2: 18       POP   A
+    2BE3: 53 19    MOV   [__r2],A
+    2BE5: 18       POP   A
+    2BE6: 53 1A    MOV   [__r1],A
+    2BE8: 18       POP   A
+    2BE9: 08       PUSH  A
+    2BEA: 51 1A    MOV   A,[__r1]
+    2BEC: 08       PUSH  A
+    2BED: 51 19    MOV   A,[__r2]
+    2BEF: 08       PUSH  A
+    2BF0: 51 18    MOV   A,[__r3]
+    2BF2: 08       PUSH  A
+    2BF3: 52 02    MOV   A,[X+2]
+    2BF5: 08       PUSH  A
+    2BF6: 52 03    MOV   A,[X+3]
+    2BF8: 08       PUSH  A
+    2BF9: 52 04    MOV   A,[X+4]
+    2BFB: 08       PUSH  A
+    2BFC: 52 05    MOV   A,[X+5]
+    2BFE: 08       PUSH  A
+    2BFF: 7C 21 9A LCALL __fpmul
+    2C02: 18       POP   A
+    2C03: 54 05    MOV   [X+5],A
+    2C05: 18       POP   A
+    2C06: 54 04    MOV   [X+4],A
+    2C08: 18       POP   A
+    2C09: 54 03    MOV   [X+3],A
+    2C0B: 18       POP   A
+    2C0C: 54 02    MOV   [X+2],A
+    2C0E: 38 FC    ADD   SP,252
+    2C10: 80 8D    JMP   0x2C9E
+    2C12: 62 D0 00 MOV   REG[208],0
+    2C15: 52 01    MOV   A,[X+1]
+    2C17: 73       CPL   A
+    2C18: 11 FF    SUB   A,255
+    2C1A: 53 1A    MOV   [__r1],A
+    2C1C: 52 00    MOV   A,[X+0]
+    2C1E: 73       CPL   A
+    2C1F: 19 FF    SBB   A,255
+    2C21: 53 1B    MOV   [__r0],A
+    2C23: 68 1B    ASR   [__r0]
+    2C25: 6E 1A    RRC   [__r1]
+    2C27: 52 06    MOV   A,[X+6]
+    2C29: 53 17    MOV   [__r4],A
+    2C2B: 52 07    MOV   A,[X+7]
+    2C2D: 53 16    MOV   [__r5],A
+    2C2F: 52 08    MOV   A,[X+8]
+    2C31: 53 15    MOV   [__r6],A
+    2C33: 52 09    MOV   A,[X+9]
+    2C35: 53 14    MOV   [__r7],A
+    2C37: 51 1A    MOV   A,[__r1]
+    2C39: 21 1F    AND   A,31
+    2C3B: A0 0F    JZ    0x2C4B
+    2C3D: 62 D0 00 MOV   REG[208],0
+    2C40: 65 14    ASL   [__r7]
+    2C42: 6B 15    RLC   [__r6]
+    2C44: 6B 16    RLC   [__r5]
+    2C46: 6B 17    RLC   [__r4]
+    2C48: 78       DEC   A
+    2C49: BF F3    JNZ   0x2C3D
+    2C4B: 62 D0 00 MOV   REG[208],0
+    2C4E: 51 17    MOV   A,[__r4]
+    2C50: 54 06    MOV   [X+6],A
+    2C52: 51 16    MOV   A,[__r5]
+    2C54: 54 07    MOV   [X+7],A
+    2C56: 51 15    MOV   A,[__r6]
+    2C58: 54 08    MOV   [X+8],A
+    2C5A: 51 14    MOV   A,[__r7]
+    2C5C: 54 09    MOV   [X+9],A
+    2C5E: 52 06    MOV   A,[X+6]
+    2C60: 08       PUSH  A
+    2C61: 52 07    MOV   A,[X+7]
+    2C63: 08       PUSH  A
+    2C64: 52 08    MOV   A,[X+8]
+    2C66: 08       PUSH  A
+    2C67: 52 09    MOV   A,[X+9]
+    2C69: 08       PUSH  A
+    2C6A: 7C 24 6D LCALL __long2fp
+    2C6D: 18       POP   A
+    2C6E: 53 18    MOV   [__r3],A
+    2C70: 18       POP   A
+    2C71: 53 19    MOV   [__r2],A
+    2C73: 18       POP   A
+    2C74: 53 1A    MOV   [__r1],A
+    2C76: 18       POP   A
+    2C77: 08       PUSH  A
+    2C78: 51 1A    MOV   A,[__r1]
+    2C7A: 08       PUSH  A
+    2C7B: 51 19    MOV   A,[__r2]
+    2C7D: 08       PUSH  A
+    2C7E: 51 18    MOV   A,[__r3]
+    2C80: 08       PUSH  A
+    2C81: 52 02    MOV   A,[X+2]
+    2C83: 08       PUSH  A
+    2C84: 52 03    MOV   A,[X+3]
+    2C86: 08       PUSH  A
+    2C87: 52 04    MOV   A,[X+4]
+    2C89: 08       PUSH  A
+    2C8A: 52 05    MOV   A,[X+5]
+    2C8C: 08       PUSH  A
+    2C8D: 7C 22 83 LCALL __fpdiv
+    2C90: 18       POP   A
+    2C91: 54 05    MOV   [X+5],A
+    2C93: 18       POP   A
+    2C94: 54 04    MOV   [X+4],A
+    2C96: 18       POP   A
+    2C97: 54 03    MOV   [X+3],A
+    2C99: 18       POP   A
+    2C9A: 54 02    MOV   [X+2],A
+    2C9C: 38 FC    ADD   SP,252
+    2C9E: 56 01 00 MOV   [X+1],0
+    2CA1: 56 00 00 MOV   [X+0],0
+    2CA4: 62 D0 00 MOV   REG[208],0
+    2CA7: 52 02    MOV   A,[X+2]
+    2CA9: 08       PUSH  A
+    2CAA: 52 03    MOV   A,[X+3]
+    2CAC: 08       PUSH  A
+    2CAD: 52 04    MOV   A,[X+4]
+    2CAF: 08       PUSH  A
+    2CB0: 52 05    MOV   A,[X+5]
+    2CB2: 08       PUSH  A
+    2CB3: 52 F9    MOV   A,[X-7]
+    2CB5: 08       PUSH  A
+    2CB6: 52 FA    MOV   A,[X-6]
+    2CB8: 08       PUSH  A
+    2CB9: 52 FB    MOV   A,[X-5]
+    2CBB: 08       PUSH  A
+    2CBC: 52 FC    MOV   A,[X-4]
+    2CBE: 08       PUSH  A
+    2CBF: 7C 22 83 LCALL __fpdiv
+    2CC2: 18       POP   A
+    2CC3: 53 18    MOV   [__r3],A
+    2CC5: 18       POP   A
+    2CC6: 53 19    MOV   [__r2],A
+    2CC8: 18       POP   A
+    2CC9: 53 1A    MOV   [__r1],A
+    2CCB: 18       POP   A
+    2CCC: 53 1B    MOV   [__r0],A
+    2CCE: 38 FC    ADD   SP,252
+    2CD0: 52 02    MOV   A,[X+2]
+    2CD2: 08       PUSH  A
+    2CD3: 52 03    MOV   A,[X+3]
+    2CD5: 08       PUSH  A
+    2CD6: 52 04    MOV   A,[X+4]
+    2CD8: 08       PUSH  A
+    2CD9: 52 05    MOV   A,[X+5]
+    2CDB: 08       PUSH  A
+    2CDC: 51 1B    MOV   A,[__r0]
+    2CDE: 08       PUSH  A
+    2CDF: 51 1A    MOV   A,[__r1]
+    2CE1: 08       PUSH  A
+    2CE2: 51 19    MOV   A,[__r2]
+    2CE4: 08       PUSH  A
+    2CE5: 51 18    MOV   A,[__r3]
+    2CE7: 08       PUSH  A
+    2CE8: 7C 20 B6 LCALL __fpadd
+    2CEB: 18       POP   A
+    2CEC: 53 18    MOV   [__r3],A
+    2CEE: 18       POP   A
+    2CEF: 53 19    MOV   [__r2],A
+    2CF1: 18       POP   A
+    2CF2: 53 1A    MOV   [__r1],A
+    2CF4: 18       POP   A
+    2CF5: 38 FC    ADD   SP,252
+    2CF7: 08       PUSH  A
+    2CF8: 51 1A    MOV   A,[__r1]
+    2CFA: 08       PUSH  A
+    2CFB: 51 19    MOV   A,[__r2]
+    2CFD: 08       PUSH  A
+    2CFE: 51 18    MOV   A,[__r3]
+    2D00: 08       PUSH  A
+    2D01: 50 3F    MOV   A,63
+    2D03: 08       PUSH  A
+    2D04: 50 00    MOV   A,0
+    2D06: 08       PUSH  A
+    2D07: 08       PUSH  A
+    2D08: 08       PUSH  A
+    2D09: 7C 21 9A LCALL __fpmul
+    2D0C: 18       POP   A
+    2D0D: 54 05    MOV   [X+5],A
+    2D0F: 18       POP   A
+    2D10: 54 04    MOV   [X+4],A
+    2D12: 18       POP   A
+    2D13: 54 03    MOV   [X+3],A
+    2D15: 18       POP   A
+    2D16: 54 02    MOV   [X+2],A
+    2D18: 38 FC    ADD   SP,252
+    2D1A: 77 01    INC   [X+1]
+    2D1C: 0F 00 00 ADC   [X+0],0
+    2D1F: 52 01    MOV   A,[X+1]
+    2D21: 11 02    SUB   A,2
+    2D23: 52 00    MOV   A,[X+0]
+    2D25: 31 80    XOR   A,128
+    2D27: 19 80    SBB   A,128
+    2D29: CF 7A    JC    0x2CA4
+    2D2B: 62 D0 00 MOV   REG[208],0
+    2D2E: 52 02    MOV   A,[X+2]
+    2D30: 53 1B    MOV   [__r0],A
+    2D32: 52 03    MOV   A,[X+3]
+    2D34: 53 1A    MOV   [__r1],A
+    2D36: 52 04    MOV   A,[X+4]
+    2D38: 53 19    MOV   [__r2],A
+    2D3A: 52 05    MOV   A,[X+5]
+    2D3C: 53 18    MOV   [__r3],A
+    2D3E: 38 F6    ADD   SP,246
+    2D40: 20       POP   X
+    2D41: 7F       RET   
