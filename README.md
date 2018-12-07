@@ -7,6 +7,11 @@ We also compare experimentally, the results for the straightforward implementati
 Language : C++, Perl
 
 #### Execution steps for Mac OS
-1. Run "perl asmblr.pl fft-asm.txt _fpmul"
-2. Copy "fft-asm.txt-process-graph.txt" file from _PerScript_ to main directory.
-3. Run "g++ main.cpp" and "./a.out".
+```
+perl asmblr.pl fft-asm.txt _fpmul
+```
+Copy ```fft-asm.txt-process-graph.txt``` file from ```PerScript``` to main directory.
+```
+g++ main.cpp
+./a.out
+```
