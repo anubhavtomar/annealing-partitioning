@@ -1,19 +1,17 @@
-#!/usr/bin/perl
 use strict;
 use warnings;
 use bignum ;
 
-#open file
 my %instructions;
 my %nodes;
 my $node_exec_time_sw;
 my $node_exec_time_hw;
 my $node_flash_hit;
 my $node_has_mac_opt;
-my $node_nmbr_of_vreg;   #number of virtual registers ie __r0
-my @grabnodenumber;
-my @grabopcode;
-my $savekval;
+my $node_nmbr_of_vreg;
+my @currentNode;
+my @grabOpcode;
+my $prevNode;
 
 %instructions = (
 	'09'	=>	{	
@@ -719,66 +717,37 @@ my $mult_sw_exec_time = 92;
 
 my $filename = $ARGV[0];
 my $multiply_jmp_addr = $ARGV[1];
-
 	print "input file: $filename \n";
-
-	#initialize
 	$node_exec_time_sw = 0;
 	$node_exec_time_hw = 0;
 	$node_flash_hit	   = 0;
 	$node_nmbr_of_vreg = 0;
 	$node_has_mac_opt  = 0;
-
 	open (my $logfh, '>', $filename.'-execution.log'); 
-	#create output file
 	open (my $node_val, '>', $filename.'-execution.temp'); 
-
-	#read input file	
 	open(IN, "<", $filename) ;
-	# print IN;
 	while(<IN>){
-	
-		#clear newline character	
 		chomp;
-
-		#create area holding string in each element	
-		#print "from node file: $_ \n";
-		
-		$_ =~ s/^\s+//;			#remove space from beginning of line
+		$_ =~ s/^\s+//;
 		printf $logfh "Line Contents: $_ \n\n";
-
-		#check if a new node is found, if yes - close out the previous node with its values
 		if($_ =~ /^\*NODE/) {
-			#this updated to next node
-			@grabnodenumber = split (/:/, $_);
-		
-			#if its the first node- there was no previous node with values so skip this	
-			if ($grabnodenumber[1] != '1') {
-				#save values from previous node
-
-				#update value for hw estimate
-				if ($node_has_mac_opt eq 1) 
-				{
+			@currentNode = split (/:/, $_);
+			if ($currentNode[1] != '1') {
+				if ($node_has_mac_opt eq 1) {
 					$node_exec_time_hw = .1 * $node_exec_time_sw;
 				} else {
 					$node_exec_time_hw = .7 * $node_exec_time_sw - .6 * $node_nmbr_of_vreg;
 				}
-
-				$savekval = $grabnodenumber[1] -1;
-				$nodes{$savekval}{'node_exec_time_sw'} 	= $node_exec_time_sw;
-				$nodes{$savekval}{'node_exec_time_hw'} 	= $node_exec_time_hw;
-				$nodes{$savekval}{'node_flash_hits'} 	= $node_flash_hit;
-				$nodes{$savekval}{'node_has_mac_opt'} 	= $node_has_mac_opt;
-
-				#print to encoded file
-				printf $node_val $nodes{$savekval}{'node_exec_time_sw'}."\t";
-				printf $node_val $nodes{$savekval}{'node_exec_time_hw'}."\t";
-				printf $node_val $nodes{$savekval}{'node_flash_hits'}."\t";
-				printf $node_val $nodes{$savekval}{'node_has_mac_opt'}."\t";
+				$prevNode = $currentNode[1] -1;
+				$nodes{$prevNode}{'node_exec_time_sw'} 	= $node_exec_time_sw;
+				$nodes{$prevNode}{'node_exec_time_hw'} 	= $node_exec_time_hw;
+				$nodes{$prevNode}{'node_flash_hits'} 	= $node_flash_hit;
+				$nodes{$prevNode}{'node_has_mac_opt'} 	= $node_has_mac_opt;
+				printf $node_val $nodes{$prevNode}{'node_exec_time_sw'}."\t";
+				printf $node_val $nodes{$prevNode}{'node_exec_time_hw'}."\t";
+				printf $node_val $nodes{$prevNode}{'node_flash_hits'}."\t";
+				printf $node_val $nodes{$prevNode}{'node_has_mac_opt'}."\t";
 				printf $node_val "\n";
-
-				
-				#summary of node
 				printf $logfh "New node found\n";
 				printf $logfh "**********************************************************\n";
 				printf $logfh "		exec_time[sw] [ $node_exec_time_sw ] 		 \n";
@@ -787,106 +756,67 @@ my $multiply_jmp_addr = $ARGV[1];
 				printf $logfh "		has_mac_opt   [ $node_has_mac_opt  ] 		 \n";
 				printf $logfh "**********************************************************\n";
 				printf $logfh "\n\n";
-			   }
-
+		   	}
 			printf $logfh "---------------------Enter New Node: $_-------------------\n";
 			printf $logfh  "\n";
-
-			#save new NODE line values
-			$nodes{key} = $grabnodenumber[1]; 
-			$nodes{$grabnodenumber[1]}{'partition'} = $grabnodenumber[2]; 
-
-			#print node number to file
-			printf $node_val "$grabnodenumber[1]\t";			#hash key prints a different value
-		
-			#reset node execution and memory time
+			$nodes{key} = $currentNode[1]; 
+			$nodes{$currentNode[1]}{'partition'} = $currentNode[2]; 
+			printf $node_val "$currentNode[1]\t";
 			$node_exec_time_sw = 0;
 			$node_exec_time_hw = 0;
 			$node_flash_hit	   = 0;
 			$node_has_mac_opt  = 0;
 			$node_nmbr_of_vreg = 0;
 	  	}	
-
-		#instruction 	
 		if($_ =~ /^[0-9|A-Z]{4}/) { 
-		 	printf $logfh "Line in Node $grabnodenumber[1] : $_\n";
-
-		 	#check if line also has a flash/e2prom read/write
+		 	printf $logfh "Line in Node $currentNode[1] : $_\n";
 			if ($_ =~ /(flash|e2prom).*(write|read)/i) {
 				$node_flash_hit = $node_flash_hit + 1;
 				printf $logfh "opcode is flash read/write with total: $node_flash_hit hits for this node\n";
-			}
-				
+			}	
 			if ($_ =~ /$multiply_jmp_addr/) {
 				$node_has_mac_opt  = 1;
 				$node_exec_time_sw = $node_exec_time_sw + $mult_sw_exec_time;
 				printf $logfh "opcode is calling a multiply task \n";
 			}
-
 			if ($_ =~ /__r[0-9]/) {
 				$node_nmbr_of_vreg = $node_nmbr_of_vreg + 1;
 				printf $logfh "opcode uses compilers virtual registers \n";
 			}
-
-			@grabopcode = split (/[\s+]/, $_);
-
-			#problem with jumps/unique commands
-			if (@grabopcode[1] =~ /8[0-9|A-Z]|A[0-9|A-Z]|B[0-9|A-Z]|C[0-9|A-Z]|D[0-9|A-Z]|E[0-9|A-Z]/) {
-				print $logfh "!!!Error!!! $grabopcode[1] \n";
-				$grabopcode[1] = substr $grabopcode[1], 0 , 1;
-				print $logfh "!!!Error!!! $grabopcode[1] \n";
+			@grabOpcode = split (/[\s+]/, $_);
+			if (@grabOpcode[1] =~ /8[0-9|A-Z]|A[0-9|A-Z]|B[0-9|A-Z]|C[0-9|A-Z]|D[0-9|A-Z]|E[0-9|A-Z]/) {
+				print $logfh "!!!Error!!! $grabOpcode[1] \n";
+				$grabOpcode[1] = substr $grabOpcode[1], 0 , 1;
+				print $logfh "!!!Error!!! $grabOpcode[1] \n";
 			}
-
-			printf $logfh "Opcode is: $grabopcode[1] \n";
-			printf $logfh "Instruction: $instructions{$grabopcode[1]}{instruction}\n";	
-			printf $logfh "Number of cycles: $instructions{$grabopcode[1]}{cycles}\n\n";
-
-			# add clock cucles for execution time
-			$node_exec_time_sw = $node_exec_time_sw +  $instructions{$grabopcode[1]}{cycles};
-		
-
-			#print info to log file
+			printf $logfh "Opcode is: $grabOpcode[1] \n";
+			printf $logfh "Instruction: $instructions{$grabOpcode[1]}{instruction}\n";	
+			printf $logfh "Number of cycles: $instructions{$grabOpcode[1]}{cycles}\n\n";
+			$node_exec_time_sw = $node_exec_time_sw +  $instructions{$grabOpcode[1]}{cycles};
 			printf $logfh  "-------\n";
 	   	}
 	}	
 
-
-	#update value for hw estimate
 	if ($node_has_mac_opt eq 1) {
 		$node_exec_time_hw = .1 * $node_exec_time_sw;
 	} else {
 		$node_exec_time_hw = .7 * $node_exec_time_sw - .6 * $node_nmbr_of_vreg;
 	}
-
-	#save values from previous node -- this applies to last node
-	$nodes{$grabnodenumber[1]}{'node_exec_time_sw'} = $node_exec_time_sw;
-	$nodes{$grabnodenumber[1]}{'node_exec_time_hw'} = $node_exec_time_hw;
-	$nodes{$grabnodenumber[1]}{'node_flash_hits'} 	= $node_flash_hit;
-	$nodes{$grabnodenumber[1]}{'node_has_mac_opt'} 	= $node_has_mac_opt;
-
-	printf $node_val $nodes{$grabnodenumber[1]}{'node_exec_time_sw'}."\t";
-	printf $node_val $nodes{$grabnodenumber[1]}{'node_exec_time_hw'}."\t";
-	printf $node_val $nodes{$grabnodenumber[1]}{'node_flash_hits'}."\t";
-	printf $node_val $nodes{$grabnodenumber[1]}{'node_has_mac_opt'}."\t";
-
-
+	$nodes{$currentNode[1]}{'node_exec_time_sw'} = $node_exec_time_sw;
+	$nodes{$currentNode[1]}{'node_exec_time_hw'} = $node_exec_time_hw;
+	$nodes{$currentNode[1]}{'node_flash_hits'} = $node_flash_hit;
+	$nodes{$currentNode[1]}{'node_has_mac_opt'} = $node_has_mac_opt;
+	printf $node_val $nodes{$currentNode[1]}{'node_exec_time_sw'}."\t";
+	printf $node_val $nodes{$currentNode[1]}{'node_exec_time_hw'}."\t";
+	printf $node_val $nodes{$currentNode[1]}{'node_flash_hits'}."\t";
+	printf $node_val $nodes{$currentNode[1]}{'node_has_mac_opt'}."\t";
 	close $node_val;
-
-	#open file and put number of nodes as the first line
 	open my $in,  '<', $filename.'-execution.temp'   or die "Can't read old file: $!";
 	open my $out, '>', $filename.'-process-graph.txt' or die "Can't write new file: $!";
-
-   	#$grabnodenumber holds last node
-	print $out $grabnodenumber[1]."\n"; # Add this line to the top\n"; # <--- HERE'S THE MAGIC
-
+	print $out $currentNode[1]."\n";
 	while( <$in> ) {
 	    print $out $_;
 	}
-
 	close $out;
-
-	print "finished\n";
-
+	print "---------------finished-------------\n";
 	close $logfh;
-
-
